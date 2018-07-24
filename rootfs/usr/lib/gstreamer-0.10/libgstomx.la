@@ -17,7 +17,7 @@ old_library='libgstomx.a'
 inherited_linker_flags=' -pthread'
 
 # Libraries that this one depends upon.
-dependency_libs=' -L../ext/lib -lOMX_Core -L/home/david/targetfs/usr/lib -L/home/david/targetfs/home/david/targetfs//usr/lib /home/david/targetfs//usr/lib/libgstbase-0.10.la -L/home/david/targetfs//usr/lib -L/home/david/ti-ezsdk_dm814x-evm_5_05_02_00/linux-devkit/arm-none-linux-gnueabi/usr/lib /home/david/targetfs//usr/lib/libgstreamer-0.10.la /home/david/targetfs//usr/lib/libgobject-2.0.la /home/david/targetfs//usr/lib/libgmodule-2.0.la /home/david/targetfs//usr/lib/libgstvideo-0.10.la /home/david/targetfs//usr/lib/libgstbase-0.10.la /home/david/targetfs//usr/lib/libgstreamer-0.10.la -lm /home/david/targetfs//usr/lib/libgobject-2.0.la /home/david/targetfs//usr/lib/libgmodule-2.0.la -ldl /home/david/targetfs//usr/lib/libgthread-2.0.la /home/david/targetfs//usr/lib/libgthread-2.0.la -lpthread /home/david/targetfs//usr/lib/libglib-2.0.la -lrt /home/david/targetfs//usr/lib/libglib-2.0.la'
+dependency_libs=' -L../ext/lib -lOMX_Core -L/home/david/ti-ezsdk_dm814x-evm_5_05_02_00/linux-devkit/arm-none-linux-gnueabi/usr/lib -lgstbase-0.10 -lgstreamer-0.10 -lgobject-2.0 -lgmodule-2.0 -lxml2 -lgstvideo-0.10 -lgthread-2.0 -lrt -lglib-2.0'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
