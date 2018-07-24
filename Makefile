@@ -2,7 +2,10 @@
 DIRNAME=$(dir $(lastword $(MAKEFILE_LIST)))
 DISTFILES  = camApp
 DISTFILES += camAppRevision
+DISTFILES += Chronos1_4PowerControllerCombinedV2.hex
 DISTFILES += FPGA.bit
+DISTFILES += pcUtil
+DISTFILES += PowerCtlMoreFlashesV2.hex
 DISTFILES += update.sh
 DISTFILES := $(addprefix $(DIRNAME)/,$(DISTFILES))
 
