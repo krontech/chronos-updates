@@ -16,10 +16,8 @@ cp camApp /opt/camera
 cp FPGA.bit /opt/camera
 cp camAppRevision /opt/camera
 
-cd /
-cd /opt/camera/
 echo "Starting capApp"
-./camApp -qws &
+/etc/init.d/camera
 
 echo "completed!"
 exit 0
