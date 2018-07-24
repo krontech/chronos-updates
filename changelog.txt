@@ -1,19 +1,12 @@
-Chronos 1.4 Software V0.2 Release Notes
+Frame drop issue
+Cold ram fix
+32GB ram fix
+Raw saving
+Saving variables
+Auto-record
+Auto-save on trigger
+Kernel - turned off gadget debug
+USB gadget update for serial 0-50
+Boot splash and uboot update (serial 0-50)
+Partial ethernet - requires commandline access to enable (NOT SECURE!)
 
-Features added and bugs fixed:
--Added Triggered Exposure and Shutter Gating modes
--Fixed bug where video can be saved to the mount point if no storage device is present
--Fixed minimum exposure time (now 1uS instead of an impossible 10ns)
--Added "About" tab to Util window, showing software version, serial number, and camera info
--Added missing backer Jared Reabow in backers list
--Added support for LUX1310 image sensor silicon revision 2
--Fixed incorrect bitrate computation in save settings window
--Disabled H264 profile and level controls (certain lower levels caused encoder to crash)
--Fixed incorrect shutter slider and exposure text after changing resolution
--Fixed incorrect updating of ROI indicator in Record Settings
--Fixed allowable range of window offset to proper multiples (16, 2). Record settings would not be applied if offset was set other -than proper multiple
--Moved close button on keyboard to bottom right
--Changed arrows on keyboard from text eg. "Up" to unicode arrow characters
-
-Known bugs in added features:
--Horizontal line issue is present in Triggered Exposure and Shutter Gating modes, to be fixed later

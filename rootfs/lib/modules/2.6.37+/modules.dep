@@ -1,0 +1,186 @@
+kernel/fs/ext4/ext4.ko: kernel/fs/jbd2/jbd2.ko
+kernel/fs/jbd2/jbd2.ko:
+kernel/fs/autofs4/autofs4.ko:
+kernel/fs/fuse/fuse.ko:
+kernel/fs/fuse/cuse.ko: kernel/fs/fuse/fuse.ko
+kernel/crypto/ecb.ko:
+kernel/crypto/aes_generic.ko:
+kernel/crypto/arc4.ko:
+kernel/crypto/michael_mic.ko:
+kernel/drivers/video/console/fbcon.ko: kernel/drivers/video/console/font.ko kernel/drivers/video/console/bitblit.ko kernel/drivers/video/console/softcursor.ko
+kernel/drivers/video/console/bitblit.ko: kernel/drivers/video/console/softcursor.ko
+kernel/drivers/video/console/font.ko:
+kernel/drivers/video/console/softcursor.ko:
+kernel/drivers/video/ti81xx/vpss/vpss.ko:
+kernel/drivers/video/ti81xx/ti81xxfb/ti81xxfb.ko: kernel/drivers/video/ti81xx/vpss/vpss.ko
+kernel/drivers/video/ti81xx/ti81xxhdmi/ti81xxhdmi.ko: kernel/drivers/video/ti81xx/vpss/vpss.ko
+kernel/drivers/video/ti81xx/tlc59108/tlc59108.ko:
+kernel/drivers/char/ti81xx_pcie_epdrv.ko:
+kernel/drivers/misc/eeprom/eeprom_93cx6.ko:
+kernel/drivers/misc/iwmc3200top/iwmc3200top.ko:
+kernel/drivers/scsi/scsi_wait_scan.ko:
+kernel/drivers/net/phy/micrel.ko:
+kernel/drivers/net/wireless/at76c50x-usb.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/hostap/hostap.ko: kernel/net/wireless/lib80211.ko
+kernel/drivers/net/wireless/b43/b43.ko: kernel/drivers/ssb/ssb.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/b43legacy/b43legacy.ko: kernel/drivers/ssb/ssb.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/zd1211rw/zd1211rw.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/rtl818x/rtl8187.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko kernel/drivers/misc/eeprom/eeprom_93cx6.ko
+kernel/drivers/net/wireless/rndis_wlan.ko: kernel/net/wireless/cfg80211.ko kernel/drivers/net/usb/rndis_host.ko kernel/drivers/net/usb/cdc_ether.ko kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/wireless/zd1201.ko:
+kernel/drivers/net/wireless/libertas/libertas.ko: kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/libertas/usb8xxx.ko: kernel/drivers/net/wireless/libertas/libertas.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/libertas/libertas_sdio.ko: kernel/drivers/net/wireless/libertas/libertas.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/libertas/libertas_spi.ko: kernel/drivers/net/wireless/libertas/libertas.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/libertas_tf/libertas_tf.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/libertas_tf/libertas_tf_usb.ko: kernel/drivers/net/wireless/libertas_tf/libertas_tf.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/rt2x00/rt2x00lib.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/rt2x00/rt2x00usb.ko: kernel/drivers/net/wireless/rt2x00/rt2x00lib.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/rt2x00/rt2800lib.ko: kernel/drivers/net/wireless/rt2x00/rt2x00lib.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko kernel/lib/crc-ccitt.ko
+kernel/drivers/net/wireless/rt2x00/rt2500usb.ko: kernel/drivers/net/wireless/rt2x00/rt2x00usb.ko kernel/drivers/net/wireless/rt2x00/rt2x00lib.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/rt2x00/rt73usb.ko: kernel/lib/crc-itu-t.ko kernel/drivers/net/wireless/rt2x00/rt2x00usb.ko kernel/drivers/net/wireless/rt2x00/rt2x00lib.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/rt2x00/rt2800usb.ko: kernel/drivers/net/wireless/rt2x00/rt2800lib.ko kernel/lib/crc-ccitt.ko kernel/drivers/net/wireless/rt2x00/rt2x00usb.ko kernel/drivers/net/wireless/rt2x00/rt2x00lib.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/p54/p54common.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko kernel/lib/crc-ccitt.ko
+kernel/drivers/net/wireless/p54/p54usb.ko: kernel/drivers/net/wireless/p54/p54common.ko kernel/lib/crc-ccitt.ko kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/ath/ath9k/ath9k_hw.ko: kernel/drivers/net/wireless/ath/ath.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/ath/ath9k/ath9k_common.ko: kernel/drivers/net/wireless/ath/ath9k/ath9k_hw.ko kernel/drivers/net/wireless/ath/ath.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/ath/ath9k/ath9k_htc.ko: kernel/net/mac80211/mac80211.ko kernel/drivers/net/wireless/ath/ath9k/ath9k_common.ko kernel/drivers/net/wireless/ath/ath9k/ath9k_hw.ko kernel/drivers/net/wireless/ath/ath.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/ath/ar9170/ar9170usb.ko: kernel/net/mac80211/mac80211.ko kernel/drivers/net/wireless/ath/ath.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/ath/carl9170/carl9170.ko: kernel/net/mac80211/mac80211.ko kernel/drivers/net/wireless/ath/ath.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/ath/ath.ko: kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/mac80211_hwsim.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/wl1251/wl1251.ko: kernel/net/mac80211/mac80211.ko kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/wireless/iwmc3200wifi/iwmc3200wifi.ko: kernel/net/wireless/cfg80211.ko
+kernel/drivers/net/ti_cpsw.ko:
+kernel/drivers/net/usb/cdc_ether.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/net1080.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/rndis_host.ko: kernel/drivers/net/usb/cdc_ether.ko kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/cdc_subset.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/zaurus.ko: kernel/drivers/net/usb/cdc_ether.ko kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/usbnet.ko:
+kernel/drivers/net/netconsole.ko:
+kernel/drivers/usb/storage/uas.ko:
+kernel/drivers/usb/storage/usb-storage.ko:
+kernel/drivers/usb/storage/ums-alauda.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-cypress.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-datafab.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-freecom.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-isd200.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-jumpshot.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-karma.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-onetouch.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-sddr09.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-sddr55.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/storage/ums-usbat.ko: kernel/drivers/usb/storage/usb-storage.ko
+kernel/drivers/usb/mon/usbmon.ko:
+kernel/drivers/usb/class/cdc-acm.ko:
+kernel/drivers/usb/class/cdc-wdm.ko:
+kernel/drivers/usb/serial/usbserial.ko:
+kernel/drivers/usb/serial/aircable.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/ark3116.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/belkin_sa.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/ch341.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/cp210x.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/cypress_m8.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/digi_acceleport.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/io_edgeport.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/io_ti.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/empeg.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/ftdi_sio.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/funsoft.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/garmin_gps.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/ipw.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/ir-usb.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/iuu_phoenix.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/keyspan_pda.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/mct_u232.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/mos7720.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/mos7840.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/navman.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/option.ko: kernel/drivers/usb/serial/usb_wwan.ko kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/oti6858.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/pl2303.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/qcaux.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/qcserial.ko: kernel/drivers/usb/serial/usb_wwan.ko kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/sam-ba.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/siemens_mpi.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/sierra.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/spcp8x5.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/ssu100.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/symbolserial.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/usb_wwan.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/ti_usb_3410_5052.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/whiteheat.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/vivopay-serial.ko: kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/gadget/g_zero.ko:
+kernel/drivers/usb/gadget/g_ether.ko:
+kernel/drivers/usb/gadget/gadgetfs.ko:
+kernel/drivers/usb/gadget/g_ffs.ko:
+kernel/drivers/usb/gadget/g_file_storage.ko:
+kernel/drivers/usb/gadget/g_mass_storage.ko:
+kernel/drivers/usb/gadget/g_serial.ko:
+kernel/drivers/usb/gadget/g_cdc.ko:
+kernel/drivers/usb/gadget/g_multi.ko:
+kernel/drivers/usb/gadget/g_webcam.ko:
+kernel/drivers/media/video/tvp7002.ko:
+kernel/drivers/media/video/gspca/gspca_main.ko:
+kernel/drivers/media/video/soc_camera.ko: kernel/drivers/media/video/soc_mediabus.ko
+kernel/drivers/media/video/soc_mediabus.ko:
+kernel/drivers/media/video/soc_camera_platform.ko:
+kernel/drivers/media/video/tiler/tcm/tcm-sita.ko:
+kernel/drivers/media/video/tiler/tiler.ko: kernel/drivers/media/video/tiler/tcm/tcm-sita.ko kernel/drivers/media/video/tiler/tiler_dmm.ko
+kernel/drivers/media/video/tiler/tiler_dmm.ko:
+kernel/drivers/media/video/ti81xx/ti81xxvo.ko: kernel/drivers/video/ti81xx/vpss/vpss.ko
+kernel/drivers/media/video/ti81xx/ti81xxvin.ko: kernel/drivers/video/ti81xx/vpss/vpss.ko
+kernel/drivers/uio/uio.ko:
+kernel/drivers/uio/uio_pdrv.ko: kernel/drivers/uio/uio.ko
+kernel/drivers/uio/uio_pdrv_genirq.ko: kernel/drivers/uio/uio.ko
+kernel/drivers/ssb/ssb.ko:
+kernel/sound/soundcore.ko:
+kernel/sound/core/oss/snd-mixer-oss.ko: kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/oss/snd-pcm-oss.ko: kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd-page-alloc.ko kernel/sound/core/oss/snd-mixer-oss.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/snd.ko: kernel/sound/soundcore.ko
+kernel/sound/core/snd-hwdep.ko: kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/snd-timer.ko: kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/snd-hrtimer.ko: kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/snd-pcm.ko: kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko kernel/sound/core/snd-page-alloc.ko
+kernel/sound/core/snd-page-alloc.ko:
+kernel/sound/core/snd-rawmidi.ko: kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/seq/snd-seq.ko: kernel/sound/core/snd-timer.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/seq/snd-seq-device.ko: kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/seq/snd-seq-midi-event.ko: kernel/sound/core/seq/snd-seq.ko kernel/sound/core/snd-timer.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/seq/oss/snd-seq-oss.ko: kernel/sound/core/seq/snd-seq-midi-event.ko kernel/sound/core/seq/snd-seq.ko kernel/sound/core/snd-timer.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/core/seq/snd-seq-midi.ko: kernel/sound/core/snd-rawmidi.ko kernel/sound/core/seq/snd-seq-midi-event.ko kernel/sound/core/seq/snd-seq.ko kernel/sound/core/snd-timer.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/usb/snd-usb-audio.ko: kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd-page-alloc.ko kernel/sound/core/snd-hwdep.ko kernel/sound/usb/snd-usbmidi-lib.ko kernel/sound/core/snd-rawmidi.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/usb/snd-usbmidi-lib.ko: kernel/sound/core/snd-rawmidi.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/usb/misc/snd-ua101.ko: kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd-page-alloc.ko kernel/sound/usb/snd-usbmidi-lib.ko kernel/sound/core/snd-rawmidi.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko
+kernel/sound/usb/caiaq/snd-usb-caiaq.ko: kernel/sound/core/snd-rawmidi.ko kernel/sound/core/seq/snd-seq-device.ko kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko kernel/sound/core/snd-page-alloc.ko
+kernel/sound/soc/snd-soc-core.ko: kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko kernel/sound/core/snd-page-alloc.ko
+kernel/sound/soc/codecs/snd-soc-tlv320aic3x.ko: kernel/sound/soc/snd-soc-core.ko kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko kernel/sound/core/snd-page-alloc.ko
+kernel/sound/soc/davinci/snd-soc-davinci.ko: kernel/sound/soc/snd-soc-core.ko kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko kernel/sound/core/snd-page-alloc.ko
+kernel/sound/soc/davinci/snd-soc-davinci-mcasp.ko: kernel/sound/soc/snd-soc-core.ko kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko kernel/sound/core/snd-page-alloc.ko
+kernel/sound/soc/davinci/snd-soc-evm.ko: kernel/sound/soc/snd-soc-core.ko kernel/sound/core/snd-pcm.ko kernel/sound/core/snd-timer.ko kernel/sound/core/snd.ko kernel/sound/soundcore.ko kernel/sound/core/snd-page-alloc.ko
+kernel/net/ipv4/xfrm4_mode_beet.ko:
+kernel/net/ipv4/inet_lro.ko:
+kernel/net/ipv4/tunnel4.ko:
+kernel/net/ipv4/xfrm4_mode_transport.ko:
+kernel/net/ipv4/xfrm4_mode_tunnel.ko:
+kernel/net/ipv4/inet_diag.ko:
+kernel/net/ipv4/tcp_diag.ko: kernel/net/ipv4/inet_diag.ko
+kernel/net/ipv6/ipv6.ko:
+kernel/net/ipv6/xfrm6_mode_transport.ko:
+kernel/net/ipv6/xfrm6_mode_tunnel.ko: kernel/net/ipv6/ipv6.ko
+kernel/net/ipv6/xfrm6_mode_beet.ko: kernel/net/ipv6/ipv6.ko
+kernel/net/ipv6/sit.ko: kernel/net/ipv4/tunnel4.ko kernel/net/ipv6/ipv6.ko
+kernel/net/wireless/cfg80211.ko:
+kernel/net/wireless/lib80211.ko:
+kernel/net/wireless/lib80211_crypt_wep.ko: kernel/net/wireless/lib80211.ko
+kernel/net/wireless/lib80211_crypt_ccmp.ko: kernel/net/wireless/lib80211.ko
+kernel/net/wireless/lib80211_crypt_tkip.ko: kernel/net/wireless/lib80211.ko
+kernel/net/rds/rds.ko:
+kernel/net/rds/rds_tcp.ko: kernel/net/rds/rds.ko
+kernel/net/mac80211/mac80211.ko: kernel/net/wireless/cfg80211.ko
+kernel/lib/crc-ccitt.ko:
+kernel/lib/crc-itu-t.ko:
+kernel/lib/crc7.ko:
+kernel/drivers/dsp/syslink.ko:

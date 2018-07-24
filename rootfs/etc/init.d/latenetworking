@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# manage network interfaces and configure some networking options
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DEVICES=eth0
+
+if ! [ -x /sbin/ifup ]; then
+    exit 0
+fi
+
+case "$1" in
+    start)
+        echo -n "Configuring network interfaces... "
+        ifup $DEVICES
+	echo "done."
+      ;;
+    stop)
+        echo -n "Deconfiguring network interfaces... "
+        ifdown $DEVICES
+        echo "done."
+      ;;
+    force-reload|restart)
+        echo -n "Reconfiguring network interfaces... "
+        ifdown $DEVICES
+        ifup $DEVICES
+        echo "done."
+      ;;
+    *)
+    echo "Usage: /etc/init.d/latenetworking {start|stop|restart|force-reload}"
+    exit 1
+  ;;
+esac
+
+exit 0
+

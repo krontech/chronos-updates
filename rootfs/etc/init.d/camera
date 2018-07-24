@@ -1,0 +1,19 @@
+#! /bin/sh
+
+export TSLIB_TSDEVICE=/dev/input/event0
+#export QWS_MOUSE_PROTO="Tslib:/dev/input/event0 Auto:/dev/input/mice"
+export QWS_MOUSE_PROTO="Tslib:/dev/input/event0"
+
+case "$1" in
+  start)
+	  /opt/camera/runCamera.sh &
+	  ;;
+  stop)
+	  killall camApp
+	  ;;
+  *)
+    echo "Usage: /etc/init.d/camera {start|stop}"
+    exit 1
+esac
+
+exit 0
