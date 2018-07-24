@@ -1,7 +1,7 @@
 killall camApp
 
 cd /opt/camera/
-./camApp -qws
+./camApp -qws -display transformed:rot0
 
 bitmap=/opt/camera/shuttingDown.data
 if [ -f $bitmap ]; then

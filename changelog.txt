@@ -9,7 +9,7 @@
 
 
 Notable Changes:
-	- Trigger I/O's Trigger delay input was moved to the Trigger Delay screen.
+- Trigger I/O's Trigger delay input was moved to the Trigger Delay screen.
 - Added Trigger Delay screen and Record Modes screen, accessible from Record Settings.
 - Black cal duration reduced by 10s to 15s or so at max resolution. (We still hope to make this much, much faster in a future beta.)
 - Colour video is saved and displayed much more accurately now.
@@ -25,3 +25,5 @@ Minutiae:
 - The Enter key has been changed to say Apply, since you have to press it to apply your changes.
 - The sliders on main screen the play screen have been made larger for ease of grabbing.
 - There is now a Settings tab in the Util pages.
+- Trigger IO window: The ratio between post-trigger frames and record length in frames is kept constant between resolution and framerate changes.
+- Play → Settings: bitsPerPixel, maxBitrate, saved file framerate, format, filename and save location are now saved as soon as they are changed instead of when the Close button is pressed.
