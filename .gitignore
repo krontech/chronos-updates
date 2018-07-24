@@ -1,3 +1,4 @@
+/rootfs/lib/udev/rules.d
 /camUpdate/
 /camUpdate.zip
 /camUpdate*.zip

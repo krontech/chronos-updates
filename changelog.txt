@@ -1,5 +1,4 @@
 
-
 	 ┌──────────────────────────────────┐ 
 	┌┘                                  └┐
 	│     Chronos Beta 0.3 Changelog     │
@@ -8,22 +7,38 @@
 
 
 
-Notable Changes:
-- Trigger I/O's Trigger delay input was moved to the Trigger Delay screen.
-- Added Trigger Delay screen and Record Modes screen, accessible from Record Settings.
-- Black cal duration reduced by 10s to 15s or so at max resolution. (We still hope to make this much, much faster in a future beta.)
-- Colour video is saved and displayed much more accurately now.
-- UI can be flipped, or set to prefer using the left side of the screen.
-- Use any SD card. Previously, a class 10 SD card was required. You can now use slower cards. Of course, using a slower SD card means that videos save slower too.
-- You can configure the "Unsaved video in RAM" popup when you hit the record button with an unsaved video in memory. It can be set to "Always", "If not reviewed" (default), or "Never". The previous behaviour was always "If not reviewed".
-- You can now auto-record after saving and auto-save after recording. This can loop.
+Relase Candidate 2:
 
-Minutiae:
-- Main screen UI can be switched to left side.
-- Mark In and Mark Out have been renamed to Mark Start and Mark End, probably just until the video seek bar is made horizontal.
-- Playback screen has 'region to be saved' marked. Each region saved is marked in a different color.
-- The Enter key has been changed to say Apply, since you have to press it to apply your changes.
-- The sliders on main screen the play screen have been made larger for ease of grabbing.
-- There is now a Settings tab in the Util pages.
-- Trigger IO window: The ratio between post-trigger frames and record length in frames is kept constant between resolution and framerate changes.
-- Play → Settings: bitsPerPixel, maxBitrate, saved file framerate, format, filename and save location are now saved as soon as they are changed instead of when the Close button is pressed.
+- Notable Changes:
+	- White balance can be selected from 5 common presets in addition to taking your own as you could previously.
+	- Colour calibration (via Set White Balance) now works as expected, and produces vastly more realistic colours.
+	- Set White Balance now calculates against 80% brightness white instead of 100% brightness white.
+
+- Minor Changes:
+	- File size warning when saving are generally more reliable now. (eg., 4+GB file warning now FAT32-only, since only FAT32 has a 4GB file size limit.)
+	- Saving doesn't change the marked region of video. (Previously, it would advance video marks to the end of the recorded area.)
+	- Changes to video saving settings are now applied as they are made, not just when the popup is closed.
+	- Added a visual button to add more pre-record slider time in the trigger delay window.
+
+
+Release Candidate 1:
+
+- Notable Changes:
+	- Trigger I/O's Trigger delay input was moved to the Trigger Delay screen.
+	- Added Trigger Delay screen and Record Modes screen, accessible from Record Settings.
+	- Black cal duration reduced by 10s to 15s or so at max resolution. (We still hope to make this much, much faster in a future beta.)
+	- Colour video is saved and displayed much more accurately now.
+	- UI can be flipped, or set to prefer using the left side of the screen.
+	- Use any SD card. Previously, a class 10 SD card was required. You can now use slower cards. Of course, using a slower SD card means that videos save slower too.
+	- You can configure the "Unsaved video in RAM" popup when you hit the record button with an unsaved video in memory. It can be set to "Always", "If not reviewed" (default), or "Never". The previous behaviour was always "If not reviewed".
+	- You can now auto-record after saving and auto-save after recording. This can loop.
+	
+- Minor Changes:
+	- Main screen UI can be switched to left side.
+	- Mark In and Mark Out have been renamed to Mark Start and Mark End, probably just until the video seek bar is made horizontal.
+	- Playback screen has 'region to be saved' marked. Each region saved is marked in a different color.
+	- The Enter key has been changed to say Apply, since you have to press it to apply your changes.
+	- The sliders on main screen the play screen have been made larger for ease of grabbing.
+	- There is now a Settings tab in the Util pages.
+	- Trigger IO window: The ratio between post-trigger frames and record length in frames is kept constant between resolution and framerate changes.
+	- Play → Settings: bitsPerPixel, maxBitrate, saved file framerate, format, filename and save location are now saved as soon as they are changed instead of when the Close button is pressed.
