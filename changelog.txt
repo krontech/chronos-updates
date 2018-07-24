@@ -1,44 +1,51 @@
-
-	 ┌──────────────────────────────────┐ 
-	┌┘                                  └┐
-	│     Chronos Beta 0.3 Changelog     │
-	└┐                                  ┌┘
-	 └──────────────────────────────────┘ 
-
+    +----------------------------------+
+   ++                                  ++
+   |     Chronos V0.3 Changelog        |
+   ++                                  ++
+    +----------------------------------+
 
 
-Relase Candidate 2:
 
-- Notable Changes:
-	- White balance can be selected from 5 common presets in addition to taking your own as you could previously.
-	- Colour calibration (via Set White Balance) now works as expected, and produces vastly more realistic colours.
-	- Set White Balance now calculates against 80% brightness white instead of 100% brightness white.
+Features added and bugs fixed since 0.2:
 
-- Minor Changes:
-	- File size warning when saving are generally more reliable now. (eg., 4+GB file warning now FAT32-only, since only FAT32 has a 4GB file size limit.)
-	- Saving doesn't change the marked region of video. (Previously, it would advance video marks to the end of the recorded area.)
-	- Changes to video saving settings are now applied as they are made, not just when the popup is closed.
-	- Added a visual button to add more pre-record slider time in the trigger delay window.
+Notable Changes:
+- White balance can be selected from 5 common presets in addition to taking your own as you could previously.
+- Custom White Balance calibration (via Set White Balance) now works as expected, and produces vastly more realistic colours.
+- Colour reproduction is greatly improved, especially reds.
+- Set White Balance now calculates against 80% brightness white instead of 100% brightness white.
+- File size warning when saving are generally more reliable now. (eg., 4+GB file warning now FAT32-only, since only FAT32 has a 4GB file size limit.)
+- Changes to video saving settings are now applied as they are made, not just when the popup is closed.
+- Keyboard behavior improved; text is now selected when you tap an edit box.
+- UI can be flipped upside-down, or set to display the main screen menu on the left side.
+- You can configure the "Unsaved video in RAM" popup that appears when you hit the record button with an unsaved video in memory. It can be set to "Always", "If not reviewed" (default), or "Never". The previous behavior was always "If not reviewed".
+- The sliders on main screen the play screen have been made larger for ease of grabbing.
+- Trigger I/O's Trigger delay input was moved to the Trigger Delay screen. A slider has been added as a visual aid and an alternate way to adjust the trigger delay. The ratio between post-trigger frames and record length in frames is kept constant between resolution and framerate changes.
+- Added Trigger Delay screen and Record Modes screen, accessible from Record Settings. Selectable modes are Normal, Segmented, and Gated Burst.
+- Black cal duration reduced by 10s to 15s or so at max resolution.
+- Use any SD card. Previously, a class 10 SD card was required. You can now use slower cards. Of course, using a slower SD card means that videos save slower too.
+- You can now auto-record after saving and/or auto-save after recording. This can loop if both are used at the same time.
 
+Minutiae:
+- Playback screen has 'region to be saved' marked. Each region saved is marked in a different color.
+- There is now a Settings tab in the Util pages. This can be used to backup, restore, or reset settings, which does not include black calibration.
+- Play -> Settings: bitsPerPixel, maxBitrate, saved file framerate, format, filename and save location are now saved as soon as they are changed instead of when the Close button is pressed.
+- Mark In and Mark Out have been renamed to Mark Start and Mark End, probably just until the video seek bar is made horizontal.
+- The Enter key has been changed to say Apply, since you have to press it to apply your changes on the record settings window.
 
-Release Candidate 1:
+Known bugs:
+-The first few frames in saved videos are from the end of the recording.
+-The camera will freeze after saving approximately 45 videos.  Make sure to reboot before saving approximately 40 videos to ensure the camera does not freeze.
+-The camera will freeze when saving a video that is over 4GB onto a FAT32 partition, or when storage is full.
+-If auto-record is enabled, but auto-save is not, a new recording will not be started.  However, the camera will still auto-record after booting the camera.
+-Warnings about filesize (over fat32 limit, or insufficient free space) can still be shown even if autosave is enabled (if autosave is enabled, the user is unlikely to be there to press Yes for the camera to continue saving)
 
-- Notable Changes:
-	- Trigger I/O's Trigger delay input was moved to the Trigger Delay screen.
-	- Added Trigger Delay screen and Record Modes screen, accessible from Record Settings.
-	- Black cal duration reduced by 10s to 15s or so at max resolution. (We still hope to make this much, much faster in a future beta.)
-	- Colour video is saved and displayed much more accurately now.
-	- UI can be flipped, or set to prefer using the left side of the screen.
-	- Use any SD card. Previously, a class 10 SD card was required. You can now use slower cards. Of course, using a slower SD card means that videos save slower too.
-	- You can configure the "Unsaved video in RAM" popup when you hit the record button with an unsaved video in memory. It can be set to "Always", "If not reviewed" (default), or "Never". The previous behaviour was always "If not reviewed".
-	- You can now auto-record after saving and auto-save after recording. This can loop.
-	
-- Minor Changes:
-	- Main screen UI can be switched to left side.
-	- Mark In and Mark Out have been renamed to Mark Start and Mark End, probably just until the video seek bar is made horizontal.
-	- Playback screen has 'region to be saved' marked. Each region saved is marked in a different color.
-	- The Enter key has been changed to say Apply, since you have to press it to apply your changes.
-	- The sliders on main screen the play screen have been made larger for ease of grabbing.
-	- There is now a Settings tab in the Util pages.
-	- Trigger IO window: The ratio between post-trigger frames and record length in frames is kept constant between resolution and framerate changes.
-	- Play → Settings: bitsPerPixel, maxBitrate, saved file framerate, format, filename and save location are now saved as soon as they are changed instead of when the Close button is pressed.
+Installation instructions:
+
+    Unzip the Zip file into the root directory of a FAT32 formatted USB stick.
+    This should result in a camUpdate folder in the root directory of the stick.
+    Boot up the camera and insert the USB stick.
+    Backup your calibration data. Tap "Backup calibration data" and wait for this to complete (about 5 seconds). The cal data is now backed up on the USB drive as cal_[serial number].tar
+    To install the update, tap Apply Software Update.
+    A message box should pop up indicating the software update was found. Tap Yes to install the update.
+    The screen will go black, you may see a screen saying "updating", and the update will be installed. This will take about 30 seconds, potentially longer depending on the speed of the USB drive. There's no feedback that anything is happening, just give it time. The camera will restart at the end of this process.
+    Done!
