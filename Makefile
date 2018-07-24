@@ -2,18 +2,22 @@
 DIRNAME=$(dir $(lastword $(MAKEFILE_LIST)))
 DISTFILES  = camApp
 DISTFILES += camAppRevision
-DISTFILES += Chronos1_4PowerControllerCombinedV2.hex
 DISTFILES += FPGA.bit
-DISTFILES += pcUtil
-DISTFILES += PowerCtlMoreFlashesV2.hex
 DISTFILES += update.sh
 DISTFILES := $(addprefix $(DIRNAME)/,$(DISTFILES))
 
-.DEFAULT_GOAL = camUpdate.zip
+DOCFILES  = changelog.txt README.txt
+DOCFILES := $(addprefix $(DIRNAME)/,$(DOCFILES))
+
+## Get the git revision
+VERSION := $(shell cd $(DIRNAME) && git describe --tags --always --dirty)
+ZIPFILE = camUpdate-$(VERSION).zip
+.DEFAULT_GOAL = $(ZIPFILE)
 
 .PHONY: help clean camUpdate $(MAKECMDGOALS)
 
 clean:
+	rm -rf $(ZIPFILE)
 	rm -rf camUpdate
 
 camUpdate: $(DISTFILES)
@@ -22,6 +26,7 @@ camUpdate: $(DISTFILES)
 	cp $(DISTFILES) camUpdate
 
 ## Generate the update package given by the make goal.
-camUpdate.zip $(filter %.zip,$(MAKECMDGOALS)): camUpdate
+$(ZIPFILE) $(filter %.zip,$(MAKECMDGOALS)): camUpdate $(DOCFILES)
 	zip -r $@ camUpdate
+	zip $@ -j $(DOCFILES)
 
