@@ -10,12 +10,14 @@ Notable Changes:
  - External HDMI displays are supported at 1080p and 720p resolutions.
  - Recording speed improvements for CinemaDNG and H.264 formats.
  - Add CinemaDNG and TIFF as save file formats.
+ - Remove Raw 16-bit right-justified save format in favor of CinemaDNG.
  - Add a Demo mode replay a section of recorded video in a loop.
 
 Minutiae:
  - Add whitebalance preset for 3200K/Tungsten lighting.
  - Adjust highlighting of text when selecting text boxes.
  - Auto-record and auto-save modes independant of one another.
+ - Improved algorithm to estimate framerate during file save.
 
 Fixed Bugs:
  - Fix crash where the video will freeze after approximately 45 recording attempts.
