@@ -1,3 +1,11 @@
+#Installation
+- Install git-lfs if not installed.
+	- Ubuntu: `sudo apt-get install git-lfs`.
+- Clone this repository. `git clone git@github.com:krontech/chronos-updates.git`. `cd chronos-updates`.
+- Make the update. `make`.
+- Copy the `camUpdate` folder to a USB stick, or more properly extract camUpdate*.zip which contains the `camUpdate` folder and a few other files.
+
+#Application
 -Unzip the Zip file into the root directory of a FAT32 formatted USB stick
 	This should result in a camUpdate folder in the root directory of the stick
 -Boot up the camera and insert the USB stick
