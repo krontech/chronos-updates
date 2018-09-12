@@ -18,9 +18,11 @@ Minutiae:
  - Adjust highlighting of text when selecting text boxes.
  - Auto-record and auto-save modes independant of one another.
  - Improved algorithm to estimate framerate during file save.
+ - Date format in the Utility window changed to shorten the Month string.
 
 Fixed Bugs:
- - Fix crash where the video will freeze after approximately 45 recording attempts.
+ - Crash causing the video to freeze after approximately 45 recording attempts.
+ - Trigger delays would scale incorrectly when using segmented recording mode.
  - Abort recordings when the free space drops below 20MB to avoid crashing when the disk is full.
 
 Known Bugs:
