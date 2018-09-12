@@ -15,3 +15,4 @@ rootfs/boot/MLO filter=lfs diff=lfs merge=lfs -text
 rootfs/boot/splash.bmp filter=lfs diff=lfs merge=lfs -text
 rootfs/opt/camera/cam-json filter=lfs diff=lfs merge=lfs -text
 rootfs/opt/camera/cam-pipeline filter=lfs diff=lfs merge=lfs -text
+rootfs/opt/camera/cam-regdump filter=lfs diff=lfs merge=lfs -text
