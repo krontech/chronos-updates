@@ -12,6 +12,7 @@ Notable Changes:
  - Add CinemaDNG and TIFF as save file formats.
  - Remove Raw 16-bit right-justified save format in favor of CinemaDNG.
  - Add a Demo mode replay a section of recorded video in a loop.
+ - Add option to overlay frame statistics onto processed video formats (H.264 and TIFF).
 
 Minutiae:
  - Add whitebalance preset for 3200K/Tungsten lighting.
@@ -19,6 +20,7 @@ Minutiae:
  - Auto-record and auto-save modes independant of one another.
  - Improved algorithm to estimate framerate during file save.
  - Date format in the Utility window changed to shorten the Month string.
+ - Display separate version strings for both the Application and Filesystem/Release.
 
 Fixed Bugs:
  - Crash causing the video to freeze after approximately 45 recording attempts.

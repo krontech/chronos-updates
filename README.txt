@@ -1,16 +1,21 @@
-#Installation
-- Install git-lfs if not installed.
-	- Ubuntu: `sudo apt-get install git-lfs`.
-- Clone this repository. `git clone git@github.com:krontech/chronos-updates.git`. `cd chronos-updates`.
-- Make the update. `make`.
-- Copy the `camUpdate` folder to a USB stick, or more properly extract camUpdate*.zip which contains the `camUpdate` folder and a few other files.
+Updating Your Camera
+====================
+ * Extract the `.zip` file into the root directory of a FAT32 formatted USB drive.
+ * Turn on your camera and insert the USB drive.
+ * From the main window, tap the `Util` button to open the utility window.
+ * As a precaution, tap the `Backup Calibration Data` button on the utility window before
+    starting the update.
+    - When the backup is completed, a pop-up window will be displayed.
+    - Tap the `Done` button to close the pop-up window.
+ * From the utility window, tap the `Apply Software Update` button to begin the software update.
+    - A warning message will be displayed, tap the `Yes` button to confirm and begin the update.
+ * During the update, the screen will go blank and an `Applying Update` message will be displayed.
+ * After approximately 60 seconds, the update will be complete and the camera will restart.
 
-#Application
--Unzip the Zip file into the root directory of a FAT32 formatted USB stick
-	This should result in a camUpdate folder in the root directory of the stick
--Boot up the camera and insert the USB stick
--Backup your calibration data. Tap "Backup calibration data" and wait for this to complete (about 5 seconds). The cal data is now backed up on the USB drive as cal_[serial number].tar
--To install the update, tap Apply Software Update
--A message box should pop up indicating the software update was found. Tap Yes to install the update.
--The screen will go blank for a few seconds, then the updated application will start.
--Done! No need to restart the camera.
+ Building a Release Package
+--------------------------
+You can build a release package directly from the git repository as follows:
+ * Install the `git-lfs` package for your operating system, or follow the installation
+        instructions at https://git-lfs.github.com/
+ * Clone the https://github.com/krontech/chronos-updates/ repository.
+ * Run `make` to build the `.zip` package.
