@@ -22,6 +22,7 @@ clean:
 
 camUpdate/update.tgz:
 	mkdir -p camUpdate
+	echo $(VERSION) > $(DIRNAME)/rootfs/opt/camera/filesystemRevision
 	[ -L $(DIRNAME)/rootfs/lib/udev/rules.d ] || ln -s /etc/udev/rules.d $(DIRNAME)/rootfs/lib/udev/
 	tar $(TARFLAGS) -czf camUpdate/update.tgz -C $(DIRNAME)/rootfs $(shell ls $(DIRNAME)/rootfs)
 
