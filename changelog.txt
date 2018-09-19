@@ -26,6 +26,7 @@ Fixed Bugs:
  - Crash causing the video to freeze after approximately 45 recording attempts.
  - Trigger delays would scale incorrectly when using segmented recording mode.
  - Abort recordings when the free space drops below 20MB to avoid crashing when the disk is full.
+ - UI bug causing the selected save location to always select the first mounted disk.
 
 Known Bugs:
  - The first frame of an H.264 recording is erroneously copied from the display buffer before the recording starts.
