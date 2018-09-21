@@ -8,15 +8,29 @@
 echo "Stopping camApp"
 killall camApp
 
+echo "Validating checksums"
+if [ -f /media/sda1/camUpdate/update.md5sum ]; then
+	badsums=$(cd /media/sda1/ && md5sum -c camUpdate/update.md5sum | grep 'FAILED$')
+	if [ "$badsums" != "" ]; then
+		cat /media/sda1/camUpdate/checksum.raw > /dev/fb0
+		sleep 10
+		reboot
+		exit 1
+	fi
+fi
+
 bitmap=/media/sda1/camUpdate/busy.raw
 if [ -f $bitmap ]; then
+	TIMEOUT=100
 	while true; do
-		ps_out=$(ps)
-		grep_out=$(echo $ps_out | grep camApp)
+		grep_out=$(ps | grep camApp)
 		if [[ "$grep_out" == "" ]]; then
 			break
-		else
+		elif [[ $TIMEOUT -gt 0 ]]; then
+			TIMEOUT=$((TIMEOUT-1))
 			sleep 0.1s
+		else
+			killall -9 camApp
 		fi
 	done
 	echo "---<<< Showing Shutdown Splash >>>---"

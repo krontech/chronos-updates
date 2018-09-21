@@ -1,6 +1,6 @@
 ## Makefile rules just cleans up the syntax a bit.
 DIRNAME=$(dir $(lastword $(MAKEFILE_LIST)))
-DISTFILES  = busy.raw
+DISTFILES  = busy.raw checksum.raw
 DISTFILES += update.sh
 DISTFILES += update_real.sh
 DISTFILES := $(addprefix $(DIRNAME)/,$(DISTFILES))
@@ -30,8 +30,12 @@ camUpdate: $(DISTFILES)
 	mkdir -p camUpdate
 	cp $(DISTFILES) camUpdate
 
+camUpdate/update.md5sum: camUpdate/update.tgz camUpdate
+	rm -f $@
+	md5sum camUpdate/* > $@
+
 ## Generate the update package given by the make goal.
-$(ZIPFILE) $(filter %.zip,$(MAKECMDGOALS)): camUpdate camUpdate/update.tgz $(DOCFILES)
+$(ZIPFILE) $(filter %.zip,$(MAKECMDGOALS)): camUpdate camUpdate/update.tgz camUpdate/update.md5sum $(DOCFILES)
 	rm -f $@
 	zip -r $@ camUpdate
 	zip $@ -j $(DOCFILES)
