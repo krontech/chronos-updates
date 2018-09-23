@@ -13,6 +13,7 @@ Notable Changes:
  - Remove Raw 16-bit right-justified save format in favor of CinemaDNG.
  - Add a Demo mode replay a section of recorded video in a loop.
  - Add option to overlay frame statistics onto processed video formats (H.264 and TIFF).
+ - Jog wheel can be used to adjust the exposure, and navigate the settings menus.
 
 Minutiae:
  - Add whitebalance preset for 3200K/Tungsten lighting.

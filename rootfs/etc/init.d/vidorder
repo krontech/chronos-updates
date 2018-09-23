@@ -1,0 +1,91 @@
+#! /bin/sh
+
+#set display order so the graphics are overlayed on video
+echo 1,2/3/1/0 > /sys/devices/platform/vpss/display1/order
+
+#export GPIO2 used for end of frame signal
+echo 51 > /sys/class/gpio/export
+echo rising > /sys/class/gpio/gpio51/edge
+
+#PROGRAMn
+echo 47 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio47/direction
+echo 1 > /sys/class/gpio/gpio47/value
+
+#INITn
+echo 45 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio45/direction
+
+#DONE
+echo 52 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio52/direction
+
+#SN
+echo 58 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio58/direction
+echo 1 > /sys/class/gpio/gpio58/value
+
+#HOLDn
+echo 53 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio53/direction
+echo 1 > /sys/class/gpio/gpio53/value
+
+#ENCA
+echo 20 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio20/direction
+echo both > /sys/class/gpio/gpio20/edge
+
+#ENCB
+echo 26 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio26/direction
+echo both > /sys/class/gpio/gpio26/edge
+
+#ENCSW
+echo 27 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio27/direction
+echo both > /sys/class/gpio/gpio27/edge
+
+#IO1
+echo 21 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio21/direction
+
+#IO2
+echo 127 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio127/direction
+
+#IsoIn1
+echo 16 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio16/direction
+
+#Shutter Button
+echo 66 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio66/direction
+
+#Record LED Back
+echo 25 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio25/direction
+echo 0 > /sys/class/gpio/gpio25/value
+
+#Record LED Front
+echo 41 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio41/direction
+echo 0 > /sys/class/gpio/gpio41/value
+
+#ColorSel
+echo 34 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio34/direction
+
+#VCoreBoost
+#Leave for now
+
+#SPI_DAC_CS_n
+echo 33 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio33/direction
+echo 1 > /sys/class/gpio/gpio33/value
+
+#FPGASoftReset
+echo 54 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio54/direction
+echo 0 > /sys/class/gpio/gpio54/value
+
+exit 0
