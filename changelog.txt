@@ -8,12 +8,13 @@ Notable Changes:
  - New Demosaic algorithm based on AHD, which should improve color reproduction and reduce edge noise.
  - Standalone daemon to operate the video system, with DBus API.
  - External HDMI displays are supported at 1080p and 720p resolutions.
- - Recording speed improvements for CinemaDNG and H.264 formats.
+ - Recording speed improvements.
  - Add CinemaDNG and TIFF as save file formats.
- - Remove Raw 16-bit right-justified save format in favor of CinemaDNG.
- - Add a Demo mode replay a section of recorded video in a loop.
+ - Deprecate Raw 16-bit right-justified save format in favor of CinemaDNG.
+ - Add a demo mode to replay a section of recorded video in a loop.
  - Add option to overlay frame statistics onto processed video formats (H.264 and TIFF).
  - Jog wheel can be used to adjust the exposure, and navigate the settings menus.
+ - New video memory recovery tool to download video (slowly) in the event of a software crash.
 
 Minutiae:
  - Add whitebalance preset for 3200K/Tungsten lighting.
@@ -28,6 +29,16 @@ Fixed Bugs:
  - Trigger delays would scale incorrectly when using segmented recording mode.
  - Abort recordings when the free space drops below 20MB to avoid crashing when the disk is full.
  - UI bug causing the selected save location to always select the first mounted disk.
+ - First frame of a raw recording would contain corrupted NV12 image data.
+ - First pixel of a Raw 12-bit packed frame was sometimes being dropped.
+ - Corrupted pixels at the end of a Raw 12-bit packed frame.
+
+Compatibility Issues:
+ - The pixel packing order in Raw 12-bit mode has been changed for the v0.3.1 release.
+   Given a pair of two 12-bit pixels in hexidecmal as (0x123, 0xabc), the bytes produced
+   by the Raw 12-bit packing mode changes as follows:
+     v0.3.0 and earlier: (0xab, 0xc1, 0x23)
+     v0.3.1 and later: (0x23, 0x1c, 0xab)
 
 Known Bugs:
  - The first frame of an H.264 recording is erroneously copied from the display buffer before the recording starts.
