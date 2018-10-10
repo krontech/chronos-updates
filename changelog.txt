@@ -14,6 +14,7 @@ Notable Changes:
  - Add a demo mode to replay a section of recorded video in a loop.
  - Add option to overlay frame statistics onto processed video formats (H.264 and TIFF).
  - Jog wheel can be used to adjust the exposure, and navigate the settings menus.
+ - New window to edit the color correction matrix.
  - New video memory recovery tool to download video (slowly) in the event of a software crash.
 
 Minutiae:
@@ -23,6 +24,11 @@ Minutiae:
  - Improved algorithm to estimate framerate during file save.
  - Date format in the Utility window changed to shorten the Month string.
  - Display separate version strings for both the Application and Filesystem/Release.
+ - Add crosshairs to the white balance window.
+ - Add Qt stylesheet to improve UI focus visibility.
+ - Main window displays exposure time in microseconds and shutter angle.
+ - The 'close' button on the soft keyboard now also applies the entered text.
+ - Reorganization of the numeric soft keyboard to include a negative key.
 
 Fixed Bugs:
  - Crash causing the video to freeze after approximately 45 recording attempts.
@@ -32,6 +38,12 @@ Fixed Bugs:
  - First frame of a raw recording would contain corrupted NV12 image data.
  - First pixel of a Raw 12-bit packed frame was sometimes being dropped.
  - Corrupted pixels at the end of a Raw 12-bit packed frame.
+ - Black areas of the UI become transparent after HDMI hotplug.
+ - HDMI hotplug while on the playback window would revert to live display.
+ - Add missing ColorMatrix1 and CalibrationIlluminant1 tags to CinemaDNG encoding.
+ - Fix a possible crash of the video system when aborting a file save.
+ - Fix a possible crash of the UI when rapidly aborting and re-starting a file save.
+ - Fix color correction math so that saturating the image sensor tends towards white.
 
 Compatibility Issues:
  - The pixel packing order in Raw 12-bit mode has been changed for the v0.3.1 release.
