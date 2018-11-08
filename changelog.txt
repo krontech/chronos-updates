@@ -29,6 +29,7 @@ Minutiae:
  - Main window displays exposure time in microseconds and shutter angle.
  - The 'close' button on the soft keyboard now also applies the entered text.
  - Reorganization of the numeric soft keyboard to include a negative key.
+ - Animate the status window text while a save is being aborted.
 
 Fixed Bugs:
  - Crash causing the video to freeze after approximately 45 recording attempts.
@@ -44,6 +45,7 @@ Fixed Bugs:
  - Fix a possible crash of the video system when aborting a file save.
  - Fix a possible crash of the UI when rapidly aborting and re-starting a file save.
  - Fix color correction math so that saturating the image sensor tends towards white.
+ - Fix bug causing crash when opening both the full and numeric keyboards at once.
 
 Compatibility Issues:
  - The pixel packing order in Raw 12-bit mode has been changed for the v0.3.1 release.
