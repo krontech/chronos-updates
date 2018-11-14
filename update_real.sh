@@ -3,23 +3,28 @@
 #
 # Authors: David Kronstein, Kron Technologies Inc.
 #          Matthew Peters, Kron Technologies Inc.
+#          Simon Kronstein, Kron Technologies Inc.
 #
 
 echo "Stopping camApp"
 killall camApp
 
+cd $(realpath $(dirname $0)) #start where update.sh is located
+cd .. #go up to the root dir of the partition
+UPDATEPARTITION=$(pwd)
+
 echo "Validating checksums"
-if [ -f /media/sda1/camUpdate/update.md5sum ]; then
-	badsums=$(cd /media/sda1/ && md5sum -c camUpdate/update.md5sum | grep 'FAILED$')
+if [ -f $UPDATEPARTITION/camUpdate/update.md5sum ]; then
+	badsums=$(cd $UPDATEPARTITION/ && md5sum -c camUpdate/update.md5sum | grep 'FAILED$')
 	if [ "$badsums" != "" ]; then
-		cat /media/sda1/camUpdate/checksum.raw > /dev/fb0
+		cat $UPDATEPARTITION/camUpdate/checksum.raw > /dev/fb0
 		sleep 10
 		reboot
 		exit 1
 	fi
 fi
 
-bitmap=/media/sda1/camUpdate/busy.raw
+bitmap=$UPDATEPARTITION/camUpdate/busy.raw
 if [ -f $bitmap ]; then
 	TIMEOUT=100
 	while true; do
@@ -51,7 +56,7 @@ if [ -f $bitmap ]; then
 fi
 
 # copy new files into place
-tar zxvf /media/sda1/camUpdate/update.tgz
+tar zxvf $UPDATEPARTITION/camUpdate/update.tgz
 
 echo "get rid of old TI logo"
 [ -e /media/mmcblk0p1/ti_logo.bmp ] && echo "removing ti logo" && rm /media/mmcblk0p1/ti_logo.bmp

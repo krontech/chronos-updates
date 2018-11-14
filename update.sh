@@ -3,6 +3,7 @@
 #
 # Authors: David Kronstein, Kron Technologies Inc.
 #          Matthew Peters, Kron Technologies Inc.
+#          Simon Kronstein, Kron Technologies Inc.
 #
 
-sh /media/sda1/camUpdate/update_real.sh &
+sh $(dirname $0)/update_real.sh &
