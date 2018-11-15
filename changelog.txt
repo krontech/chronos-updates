@@ -29,7 +29,7 @@ Minutiae:
  - Main window displays exposure time in microseconds and shutter angle.
  - The 'close' button on the soft keyboard now also applies the entered text.
  - Reorganization of the numeric soft keyboard to include a negative key.
- - Animate the status window text while a save is being aborted.
+ - Animate the status window text while a file save is in progress.
 
 Fixed Bugs:
  - Crash causing the video to freeze after approximately 45 recording attempts.
