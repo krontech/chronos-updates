@@ -9,18 +9,9 @@ Updating Your Camera
     - Tap the `Done` button to close the pop-up window.
  * From the utility window, tap the `Apply Software Update` button to begin the software update.
     - A warning message will be displayed, tap the `Yes` button to confirm and begin the update.
-    - If a pop-up that says 'No software update found' is displayed, even when a USB stick containing the update in the correct location is connected, follow the steps listed in the section below.
+    - If a pop-up that says 'No software update found' is displayed, even when a USB stick containing the update in the correct location is connected, reboot the camera and try again.
  * During the update, the screen will go blank and an `Applying Update` message will be displayed.
  * After approximately 60 seconds, the update will be complete and the camera will restart.
-
- Workaround for "No software update found" pop-up
---------------------------
- * Use a Linux computer to log into the camera from a console by running the command 'ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 root@192.168.12.1'
-    - If ssh does not work due to being too new, you will need to install ssh1 and use that instead.
- * Then, use the 'df' command to view the available mount points.  See whether '/media/sda1' or '/media/sdb1' is listed in the 'Mounted on' column.
- * Use the 'cd' command, followed by whichever path was listed, and camUpdate.  For example: 'cd /media/sda1/camUpdate/'
- * 'ls' to confirm that 'update.sh' and five other files are in this directory.
- * To run the update: 'sh ./update.sh'
  
  Building a Release Package
 --------------------------
