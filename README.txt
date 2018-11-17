@@ -16,6 +16,7 @@ Updating Your Camera
  Workaround for "No software update found" pop-up
 --------------------------
  * Use a Linux computer to log into the camera from a console by running the command 'ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 root@192.168.12.1'
+    - If ssh does not work due to being too new, you will need to install ssh1 and use that instead.
  * Then, use the 'df' command to view the available mount points.  See whether '/media/sda1' or '/media/sdb1' is listed in the 'Mounted on' column.
  * Use the 'cd' command, followed by whichever path was listed, and camUpdate.  For example: 'cd /media/sda1/camUpdate/'
  * 'ls' to confirm that 'update.sh' and five other files are in this directory.
