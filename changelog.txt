@@ -44,6 +44,7 @@ Fixed Bugs:
  - Add missing ColorMatrix1 and CalibrationIlluminant1 tags to CinemaDNG encoding.
  - Fix a possible crash of the video system when aborting a file save.
  - Fix a possible crash of the UI when rapidly aborting and re-starting a file save.
+ - Fix a possible deadlock of the video system when switching resolutions.
  - Fix color correction math so that saturating the image sensor tends towards white.
  - Fix bug causing crash when opening both the full and numeric keyboards at once.
 
