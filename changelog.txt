@@ -30,7 +30,7 @@ Minutiae:
  - The 'close' button on the soft keyboard now also applies the entered text.
  - Reorganization of the numeric soft keyboard to include a negative key.
  - Animate the status window text while a file save is in progress.
- - When updating from v0.3.1 or later, camera can now be updated from an SD card in the top slot. Previously, it only supported updates on USB.
+ - When updating from v0.3.1-RC1 or later, camera can now be updated from an SD card in the top slot. Previously, it only supported updates on USB.
 
 Fixed Bugs:
  - Crash causing the video to freeze after approximately 45 recording attempts.
@@ -50,7 +50,6 @@ Fixed Bugs:
  - Fix bug causing crash when opening both the full and numeric keyboards at once.
  - Camapp crashes or fails to save if directory not writable
  - Exposure drops every time user cancels on record settings
- - Overlay not showing on first save if either autosave was enabled, or if save tapped quickly after opening playback window
  - Allow exposure to go down to 1us.
 
 Compatibility Issues:
