@@ -62,6 +62,7 @@ Compatibility Issues:
 
 Known Bugs:
  - The first frame of an H.264 recording is erroneously copied from the display buffer before the recording starts.
+ - After saving hundreds or thousands (usually thousands) of videos, the camera may lock up on the playback/save window.
 
     +----------------------------------+
    ++                                  ++
