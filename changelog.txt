@@ -55,6 +55,8 @@ Fixed Bugs:
  - Focus peaking color resets after rebooting camera, or pressing OK on Record Settings.
  - Segmented record mode only: Invalid data would sometimes appear at the end of the recording.
  - White balance doesn't work so well when framerate and gain are high
+ - "Restore Settings from backup" not working
+ - Prerecord box not showing on Record Modes if gated burst is enabled before that screen was opened.
 
 Compatibility Issues:
  - The pixel packing order in Raw 12-bit mode has been changed for the v0.3.1 release.
