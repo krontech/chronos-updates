@@ -1,17 +1,17 @@
 Updating Your Camera
 ====================
  * Extract the `.zip` file into the root directory of a FAT32 formatted USB drive.
- * Turn on your camera and insert the USB drive into the USB/eSATA combo port, not the one labeled 'OTG'.
+    - This should result in a camUpdate folder in the root directory of the stick.
+ * Turn on your camera and insert the USB drive into the USB/eSATA combo port.
  * From the main window, tap the `Util` button to open the utility window.
- * As a precaution, tap the `Backup Calibration Data` button on the utility window before
-    starting the update.
-    - When the backup is completed, a pop-up window will be displayed.
+ * As a precaution, tap the `Backup Calibration Data` button on the utility window before starting the update.
+    - This should take about 5 seconds. When the backup is completed, a pop-up window will be displayed.
     - Tap the `Done` button to close the pop-up window.
  * From the utility window, tap the `Apply Software Update` button to begin the software update.
     - A warning message will be displayed, tap the `Yes` button to confirm and begin the update.
     - If a pop-up that says 'No software update found' is displayed, even when a USB stick containing the update in the correct location is connected, reboot the camera and try again.
- * During the update, the screen will go blank and an `Applying Update` message will be displayed.
- * After approximately 60 seconds, the update will be complete and the camera will restart.
+ * During the update, the screen will go blank and an `Applying Update` message may be displayed.
+ * After approximately 30 to 60 seconds, the update will be complete and the camera will restart.
  
 Building a Release Package
 --------------------------

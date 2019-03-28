@@ -50,7 +50,11 @@ Fixed Bugs:
  - Fix bug causing crash when opening both the full and numeric keyboards at once.
  - Camapp crashes or fails to save if directory not writable
  - Exposure drops every time user cancels on record settings
- - Allow exposure to go down to 1us.
+ - Minimum exposure was around 1.2us instead of 1.0us.
+ - Maximum exposure wasn't quite attainable with the shutter slider on the main screen.
+ - Focus peaking color resets after rebooting camera, or pressing OK on Record Settings.
+ - Segmented record mode only: Invalid data would sometimes appear at the end of the recording.
+ - White balance doesn't work so well when framerate and gain are high
 
 Compatibility Issues:
  - The pixel packing order in Raw 12-bit mode has been changed for the v0.3.1 release.
@@ -62,14 +66,20 @@ Compatibility Issues:
 Known Bugs:
  - The first frame of an H.264 recording is erroneously copied from the display buffer before the recording starts.
  - After saving hundreds or thousands (usually thousands) of videos, the camera may lock up on the playback/save window.
+ - After rebooting a camera, focus aid and zebras are sometimes not restored even if they were enabled before the reboot.
+ - Gated Burst record mode only: Live display does not appear to be buffered correctly when the trigger signal is inactive.
+ - Gated burst record mode only: Trigger stops responding after multiple triggers until the recording is stopped and restarted.
+
+
+
+
+
 
     +----------------------------------+
    ++                                  ++
-   |     Chronos V0.3 Changelog        |
+   |      Chronos V0.3 Changelog        |
    ++                                  ++
     +----------------------------------+
-
-
 
 Features added and bugs fixed since 0.2:
 
@@ -104,13 +114,25 @@ Known bugs:
 -If auto-record is enabled, but auto-save is not, a new recording will not be started.  However, the camera will still auto-record after booting the camera.
 -Warnings about filesize (over fat32 limit, or insufficient free space) can still be shown even if autosave is enabled (if autosave is enabled, the user is unlikely to be there to press Yes for the camera to continue saving)
 
-Installation instructions:
 
-    Unzip the Zip file into the root directory of a FAT32 formatted USB stick.
-    This should result in a camUpdate folder in the root directory of the stick.
-    Boot up the camera and insert the USB stick.
-    Backup your calibration data. Tap "Backup calibration data" and wait for this to complete (about 5 seconds). The cal data is now backed up on the USB drive as cal_[serial number].tar
-    To install the update, tap Apply Software Update.
-    A message box should pop up indicating the software update was found. Tap Yes to install the update.
-    The screen will go black, you may see a screen saying "updating", and the update will be installed. This will take about 30 seconds, potentially longer depending on the speed of the USB drive. There's no feedback that anything is happening, just give it time. The camera will restart at the end of this process.
-    Done!
+
+
+
+    +----------------------------------+
+   ++                                  ++
+   |     Installation Instructions      |
+   ++                                  ++
+    +----------------------------------+
+
+ - Extract the `.zip` file into the root directory of a FAT32 formatted USB drive.
+    - This should result in a camUpdate folder in the root directory of the stick.
+ - Turn on your camera and insert the USB drive into the USB/eSATA combo port.
+ - From the main window, tap the `Util` button to open the utility window.
+ - As a precaution, tap the `Backup Calibration Data` button on the utility window before starting the update.
+    - This should take about 5 seconds. When the backup is completed, a pop-up window will be displayed.
+    - Tap the `Done` button to close the pop-up window.
+ - From the utility window, tap the `Apply Software Update` button to begin the software update.
+    - A warning message will be displayed, tap the `Yes` button to confirm and begin the update.
+    - If a pop-up that says 'No software update found' is displayed, even when a USB stick containing the update in the correct location is connected, reboot the camera and try again.
+ - During the update, the screen will go blank and an `Applying Update` message may be displayed.
+ - After approximately 30 to 60 seconds, the update will be complete and the camera will restart.
