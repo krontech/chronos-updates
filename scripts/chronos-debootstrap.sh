@@ -65,6 +65,14 @@ chroot ${SYSROOT} /var/lib/dpkg/info/dash.preinst install
 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true LC_ALL=C LANGUAGE=C LANG=C \
 	chroot ${SYSROOT} dpkg --configure -a
 
+## Configure en_US:UTF-8 as the default locale.
+sed -i 's/^# *\(en_US.UTF-8\)/\1/' ${SYSROOT}/etc/locale.gen
+cat << EOF > ${SYSROOT}/etc/default/locale
+LANG="en_US.UTF-8"
+LANGUAGE="en_US:en"
+EOF
+chroot ${SYSROOT} locale-gen
+
 ## Provide a root password
 echo "root:chronos" | chroot ${SYSROOT} chpasswd
 

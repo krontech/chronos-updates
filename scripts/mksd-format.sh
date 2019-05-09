@@ -27,6 +27,7 @@ unit: sectors
 ${BOOTPART} : start=63,    type=c, size=80262, bootable
 ${ROOTFSPART} : start=80325, type=83
 EOF
+blockdev --rereadpt ${BLOCKDEV}
 
 # Install the bootloader
 echo "Installing bootloader into ${BOOTPART}"
