@@ -44,7 +44,7 @@ umount ${BOOTMOUNT}
 rmdir ${BOOTMOUNT} 
 
 # Install the root filesystem.
-echo "Installing root filesystem into ${ROOFSPART}"
+echo "Installing root filesystem into ${ROOTFSPART}"
 mkfs.ext3 -j -L "ROOTFS" ${ROOTFSPART}
 ROOTFSMOUNT=$(mktemp -d)
 mount -t ext3 ${ROOTFSPART} ${ROOTFSMOUNT}
