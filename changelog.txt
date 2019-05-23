@@ -1,5 +1,21 @@
     +----------------------------------+
    ++                                  ++
+   |     Chronos V0.3.2 Changelog       |
+   ++                                  ++
+    +----------------------------------+
+
+Notable Changes:
+ - Automatic ADC offset calibration on resolution changes, which should reduce column banding across a wider temperature range.
+ - 3-point column calibration to improve column matching.
+ - Add a storage tab to the util menu to view, eject and format the attached storage devices.
+ - Speed boost at most resolutions, with a top speed of 1069fps at 1280x1024, and 40420fps at 320x96.
+
+Minutae:
+ - Factory black calibration is now user accessible from the Factory tab of the util window.
+ - The software update button has been moved to the storage tab of the util window.
+
+    +----------------------------------+
+   ++                                  ++
    |     Chronos V0.3.1 Changelog       |
    ++                                  ++
     +----------------------------------+
