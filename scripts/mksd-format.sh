@@ -1,7 +1,7 @@
 #!/bin/bash
 BLOCKDEV=$1
-BOOTDIR="$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)/rootfs/boot/"
-SYSROOT="$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)/debian/"
+BOOTDIR="$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)/rootfs/boot"
+SYSROOT="$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)/debian"
 BOOTPART=${BLOCKDEV}1
 ROOTFSPART=${BLOCKDEV}2
 
