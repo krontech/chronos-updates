@@ -27,6 +27,7 @@ unit: sectors
 ${BOOTPART} : start=63,    type=c, size=80262, bootable
 ${ROOTFSPART} : start=80325, type=83, size=7378944
 EOF
+blockdev --rereadpt ${BLOCKDEV}
 
 # Install the bootloader
 echo "Installing bootloader into ${BOOTPART}"
@@ -47,7 +48,7 @@ echo "Installing root filesystem into ${ROOTFSPART}"
 mkfs.ext3 -j -L "ROOTFS" ${ROOTFSPART}
 ROOTFSMOUNT=$(mktemp -d)
 mount -t ext3 ${ROOTFSPART} ${ROOTFSMOUNT}
-rsync -a --info=progress2 ${SYSROOT} ${ROOTFSMOUNT}
+rsync -a --info=progress2 ${SYSROOT}/ ${ROOTFSMOUNT}
 umount ${ROOTFSMOUNT}
 rmdir ${ROOTFSMOUNT}
 

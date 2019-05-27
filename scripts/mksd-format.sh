@@ -48,7 +48,7 @@ echo "Installing root filesystem into ${ROOTFSPART}"
 mkfs.ext3 -j -L "ROOTFS" ${ROOTFSPART}
 ROOTFSMOUNT=$(mktemp -d)
 mount -t ext3 ${ROOTFSPART} ${ROOTFSMOUNT}
-rsync -a --info=progress2 ${SYSROOT} ${ROOTFSMOUNT}
+rsync -a --info=progress2 ${SYSROOT}/ ${ROOTFSMOUNT}
 umount ${ROOTFSMOUNT}
 rmdir ${ROOTFSMOUNT}
 
