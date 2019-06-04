@@ -12,6 +12,7 @@ killall camApp
 cd $(realpath $(dirname $0)) #start where update.sh is located
 cd .. #go up to the root dir of the partition
 UPDATEPARTITION=$(pwd)
+PMICHEXFILE=$UPDATEPARTITION/camUpdate/Chronos1_4PowerController.X.production.hex
 
 echo "Validating checksums"
 if [ -f $UPDATEPARTITION/camUpdate/update.md5sum ]; then
@@ -100,6 +101,24 @@ update-rc.d -f alsa-state remove
 update-rc.d alsa-state start 80 S .
 
 update-rc.d udhcpcd defaults
+
+#Update the Power Management IC if an update file is in the update drive's root directory:
+echo "Checking for PMIC Hex File"
+
+if test -f "$PMICHEXFILE"; then
+	echo "$PMICHEXFILE exists, starting PMIC firmware update"
+
+	echo "Stopping power management daemon"
+	killall camshutdown
+	killall pcUtil
+
+	echo "Updating PMIC Firmware"
+	$UPDATEPARTITION/camUpdate/./pcUtil -u $PMICHEXFILE
+
+else
+	echo "Skipping PMIC firmware update"
+
+fi
 
 
 echo "completed!"

@@ -3,6 +3,8 @@ DIRNAME=$(dir $(lastword $(MAKEFILE_LIST)))
 DISTFILES  = busy.raw checksum.raw
 DISTFILES += update.sh
 DISTFILES += update_real.sh
+DISTFILES += Chronos1_4PowerController.X.production.hex
+DISTFILES += pcUtil
 DISTFILES := $(addprefix $(DIRNAME)/,$(DISTFILES))
 
 DOCFILES  = changelog.txt README.txt
