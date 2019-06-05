@@ -6,4 +6,4 @@
 #          Simon Kronstein, Kron Technologies Inc.
 #
 
-sh $(dirname $0)/update_real.sh &
+sh $(dirname $0)/update_real.sh 2>&1 | tee $(dirname $0)/update.log &
