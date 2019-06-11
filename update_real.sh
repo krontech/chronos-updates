@@ -13,7 +13,7 @@ cd $(realpath $(dirname $0)) #start where update.sh is located
 cd .. #go up to the root dir of the partition
 UPDATEPARTITION=$(pwd)
 PMICHEXFILE=$UPDATEPARTITION/camUpdate/Chronos1_4PowerController.X.production.hex
-PMICHEXVERSION=6
+PMICHEXVERSION=7
 
 echo "Validating checksums"
 if [ -f $UPDATEPARTITION/camUpdate/update.md5sum ]; then
