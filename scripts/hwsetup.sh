@@ -35,12 +35,16 @@ echo triplediscrete,rgb888,0/0/0/0 > /sys/devices/platform/vpss/display1/output
 echo 1,2/3/1/0 > /sys/devices/platform/vpss/display1/order
 echo 1 > /sys/devices/platform/vpss/display1/enabled
 echo 1:dvo2 > /sys/devices/platform/vpss/graphics0/nodes
-	
-until [ -e /dev/fb0 ]
+
+TIMEOUT=10	
+until [ -e /dev/fb0 ] || [ "$TIMEOUT" -eq "0" ]; 
 do
+	TIMEOUT=$((TIMEOUT-1))
 	sleep 0.5
 done
-fbset -xres 800 -yres 480 -vxres 800 -vyres 1440
+if [ -e /dev/fb0 ]; then
+	fbset -xres 800 -yres 480 -vxres 800 -vyres 1440
+fi
 
 #################################################
 ## Initialize the FPGA control signals.
