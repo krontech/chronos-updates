@@ -5,8 +5,7 @@
     +----------------------------------+
 
 Notable Changes:
- - Automatic ADC offset calibration on resolution changes, which should reduce column banding across a wider temperature range.
- - 3-point column calibration to improve column matching.
+ - Automatic ADC calibration during black calibration, which should reduce column banding across a wider temperature range.
  - Add a storage tab to the util menu to view, eject and format the attached storage devices.
  - Speed boost at most resolutions, with a top speed of 1069fps at 1280x1024, and 40420fps at 320x96.
  - Configurable automated power-on and off depending on the AC adaptor status.
@@ -15,6 +14,12 @@ Minutae:
  - Factory black calibration is now user accessible from the Factory tab of the util window.
  - The software update button has been moved to the storage tab of the util window.
  - Shipping mode to disable power-on by battery until an AC adaptor is attached.
+ - Add a watchdog to reboot the camera in case of a power-on boot failure.
+
+Fixed Bugs:
+ - Memory leak in the M3 video coprocessors which could lead to a crash after lots of H.264 encoding.
+ - Ignore video which was recorded during black calibration.
+ - Changes to exposure may be overwritten during black calibration.
 
     +----------------------------------+
    ++                                  ++
