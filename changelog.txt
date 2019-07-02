@@ -9,6 +9,7 @@ Notable Changes:
  - Add a storage tab to the util menu to view, eject and format the attached storage devices.
  - Speed boost at most resolutions, with a top speed of 1069fps at 1280x1024, and 40420fps at 320x96.
  - Configurable automated power-on and off depending on the AC adaptor status.
+ - Option to disable the ring buffer when in segmented recording mode.
 
 Minutae:
  - Factory black calibration is now user accessible from the Factory tab of the util window.
@@ -20,6 +21,7 @@ Fixed Bugs:
  - Memory leak in the M3 video coprocessors which could lead to a crash after lots of H.264 encoding.
  - Ignore video which was recorded during black calibration.
  - Changes to exposure may be overwritten during black calibration.
+ - Stuttering issue on the playback window on new production LCD modules.
 
     +----------------------------------+
    ++                                  ++
