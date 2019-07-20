@@ -16,12 +16,15 @@ Minutae:
  - The software update button has been moved to the storage tab of the util window.
  - Shipping mode to disable power-on by battery until an AC adaptor is attached.
  - Add a watchdog to reboot the camera in case of a power-on boot failure.
+ - Factory black calibration removes any conflicting user calibration.
 
 Fixed Bugs:
+ - Gated burst mode may lock up after several trigger edges.
  - Memory leak in the M3 video coprocessors which could lead to a crash after lots of H.264 encoding.
  - Ignore video which was recorded during black calibration.
  - Changes to exposure may be overwritten during black calibration.
  - Stuttering issue on the playback window on new production LCD modules.
+ - Fixed deadlock in camera when restoring user settings from external media.
 
     +----------------------------------+
    ++                                  ++
