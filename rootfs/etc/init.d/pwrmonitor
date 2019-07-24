@@ -1,0 +1,23 @@
+#! /bin/sh
+
+pwrmonitor=/usr/local/sbin/camshutdown
+
+test -x "$pwrmonitor" || exit 0
+
+case "$1" in
+  start)
+    echo -n "Starting power monitor"
+    start-stop-daemon --start --quiet --exec $pwrmonitor
+    echo "."
+    ;;
+  stop)
+    echo -n "Stopping power monitor"
+    start-stop-daemon --stop --quiet --pidfile /var/run/camshutdown.pid
+    echo "."
+    ;;
+  *)
+    echo "Usage: /etc/init.d/pwrmonitor {start|stop}"
+    exit 1
+esac
+
+exit 0
