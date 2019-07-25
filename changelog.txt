@@ -25,6 +25,7 @@ Fixed Bugs:
  - Changes to exposure may be overwritten during black calibration.
  - Stuttering issue on the playback window on new production LCD modules.
  - Fixed deadlock in camera when restoring user settings from external media.
+ - Changes to focus aid or exposure aid (zebra stripes) would have no effect until resolution is changed.
 
     +----------------------------------+
    ++                                  ++
