@@ -44,6 +44,7 @@ Notable Changes:
  - Jog wheel can be used to adjust the exposure, and navigate the settings menus.
  - New window to edit the color correction matrix.
  - New video memory recovery tool to download video (slowly) in the event of a software crash.
+ - Fix issue where overexposed (clipped) parts of the image may appear to be an incorrect color
 
 Minutiae:
  - Add whitebalance preset for 3200K/Tungsten lighting.
@@ -59,6 +60,7 @@ Minutiae:
  - Reorganization of the numeric soft keyboard to include a negative key.
  - Animate the status window text while a file save is in progress.
  - When updating from v0.3.1-RC1 or later, camera can now be updated from an SD card in the top slot. Previously, it only supported updates on USB.
+ - When autosave is enabled, always name files automatically instead of using the text box to avoid potentially overwriting files if they have the same name
 
 Fixed Bugs:
  - Crash causing the video to freeze after approximately 45 recording attempts.
@@ -88,6 +90,7 @@ Fixed Bugs:
  - Focus peaking color would get reset after reboot or changing resolution
  - "Restore Settings from backup" not working
  - Prerecord box not showing on Record Modes if gated burst is enabled before that screen was opened.
+ - Trigger IO 2 was not usable because, if the user tries to apply it, the camera would just use IO 1 instead.
  - Minor UI issues
 
 Compatibility Issues:
