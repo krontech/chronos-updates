@@ -16,16 +16,22 @@ Minutae:
  - The software update button has been moved to the storage tab of the util window.
  - Shipping mode to disable power-on by battery until an AC adaptor is attached.
  - Add a watchdog to reboot the camera in case of a power-on boot failure.
- - Factory black calibration removes any conflicting user calibration.
+ - Display descriptive error strings instead of number on failure.
 
 Fixed Bugs:
- - Gated burst mode may lock up after several trigger edges.
+ - Gated burst record mode may lock up after several trigger edges.
+ - Gated burst record mode unreliable when trigger debounce is enabled
  - Memory leak in the M3 video coprocessors which could lead to a crash after lots of H.264 encoding.
- - Ignore video which was recorded during black calibration.
- - Changes to exposure may be overwritten during black calibration.
+ - Ignore video which was recorded during zero-time black calibration (which happens after changing resolution).
  - Stuttering issue on the playback window on new production LCD modules.
  - Fixed deadlock in camera when restoring user settings from external media.
+
+Fixed since V0.3.2-beta-6:
  - Changes to focus aid or exposure aid (zebra stripes) would have no effect until resolution is changed.
+ - Changes to exposure may be overwritten during black calibration.
+ - Bad image quality at 336x120 resolution
+ - Util window, storage tab - bottom of text cut off if device has multiple partitions
+ - Factory black cal (black cal all resolutions) would get overridden by old user black cal, if a user had done their own black cal, even before.
 
     +----------------------------------+
    ++                                  ++
