@@ -8,7 +8,7 @@ ROOTFSPART=${BLOCKDEV}p2
 
 # Create an 8GB file for the block device.
 touch ${FILENAME}
-truncate -s 8g ${FILENAME}
+truncate -s 3500m ${FILENAME}
 
 # Loopback device setup.
 losetup -f ${FILENAME}
