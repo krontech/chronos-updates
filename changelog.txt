@@ -17,6 +17,8 @@ Minutae:
  - Shipping mode to disable power-on by battery until an AC adaptor is attached.
  - Add a watchdog to reboot the camera in case of a power-on boot failure.
  - Display descriptive error strings instead of number on failure.
+ - End of recording from lack of free space generates a warning dialog.
+ - Revert to a valid resolution when focus is lost while editing the H/V resolution widgets.
 
 Fixed Bugs:
  - Gated burst record mode may lock up after several trigger edges.
@@ -25,6 +27,12 @@ Fixed Bugs:
  - Ignore video which was recorded during zero-time black calibration (which happens after changing resolution).
  - Stuttering issue on the playback window on new production LCD modules.
  - Fixed deadlock in camera when restoring user settings from external media.
+ - Corrupted overlay text at narrow resolutions.
+ - Video stream would remain in playback when starting recording via auto-record.
+ - Opening and closing the white balance menu can lead to an unexpected change of the custom preset.
+ - Bug in calculating the trigger delay on boot (segmented mode only).
+ - Ensure a minimum of 0.25 bits/pixel when encoding h.264 video.
+ - Crash can occur when saving extremely short videos.
 
 Fixed since V0.3.2-beta-6:
  - Changes to focus aid or exposure aid (zebra stripes) would have no effect until resolution is changed.
@@ -32,6 +40,7 @@ Fixed since V0.3.2-beta-6:
  - Bad image quality at 336x120 resolution
  - Util window, storage tab - bottom of text cut off if device has multiple partitions
  - Factory black cal (black cal all resolutions) would get overridden by old user black cal, if a user had done their own black cal, even before.
+ - Fix frame stuttering when focus peaking is enabled.
 
     +----------------------------------+
    ++                                  ++
