@@ -33,6 +33,7 @@ Fixed Bugs:
  - Bug in calculating the trigger delay on boot (segmented mode only).
  - Ensure a minimum of 0.25 bits/pixel when encoding h.264 video.
  - Crash can occur when saving extremely short videos.
+ - After rebooting a camera, focus aid and zebras are sometimes not restored even if they were enabled before the reboot.
 
 Fixed since V0.3.2-beta-6:
  - Changes to focus aid or exposure aid (zebra stripes) would have no effect until resolution is changed.
@@ -41,6 +42,15 @@ Fixed since V0.3.2-beta-6:
  - Util window, storage tab - bottom of text cut off if device has multiple partitions
  - Factory black cal (black cal all resolutions) would get overridden by old user black cal, if a user had done their own black cal, even before.
  - Fix frame stuttering when focus peaking is enabled.
+
+Known Bugs:
+ - The second frame of videos saved in all formats is not from the correct location in the selected region.
+ - The first frame of videos saved in formats other than H.264 format is corrupted.
+ - Very rare crashes of the video system, causing the camera to lock up on the playback/save window; MTBF seems to be somewhere in the 2-5k recordings at present.
+ - Gated Burst record mode only: Live display does not appear to be buffered correctly when the trigger signal is inactive.
+ - Speckles in image when recording below 60fps
+ - Black cal makes the image look very dark at low framerates when recording below about 45fps
+ - Saved videos will have a date modified of 7 or 8 hours earlier than what is set on the clock in the Util menu.
 
     +----------------------------------+
    ++                                  ++
