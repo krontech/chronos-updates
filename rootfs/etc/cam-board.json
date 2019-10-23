@@ -3,7 +3,7 @@
     "eeprom-i2c":       "/dev/i2c-1",
     "lux1310-spidev":   "/dev/spidev3.0",
     "lux1310-dac-cs":   "/sys/class/gpio/gpio33/value",
-    "lux1310-color":    "/sys/class/gpio/gpio66/value",
+    "lux1310-color":    "/sys/class/gpio/gpio34/value",
     "encoder-a":        "/sys/class/gpio/gpio20/value",
     "encoder-b":        "/sys/class/gpio/gpio26/value",
     "encoder-sw":       "/sys/class/gpio/gpio27/value",
