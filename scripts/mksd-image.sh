@@ -35,12 +35,7 @@ echo "Installing bootloader into ${BOOTPART}"
 mkfs.vfat -F 32 -n BOOT ${BOOTPART}
 BOOTMOUNT=$(mktemp -d)
 mount -t vfat ${BOOTPART} ${BOOTMOUNT}
-cp ${BOOTDIR}/boot.cmd ${BOOTMOUNT}
-cp ${BOOTDIR}/boot.scr ${BOOTMOUNT}
-cp ${BOOTDIR}/MLO      ${BOOTMOUNT}
-cp ${BOOTDIR}/splash.bmp ${BOOTMOUNT}
-cp ${BOOTDIR}/u-boot.bin ${BOOTMOUNT}
-cp ${SYSROOT}/boot/vmlinuz-* ${BOOTMOUNT}/uImage
+cp ${SYSROOT}/boot/uboot ${BOOTMOUNT}
 umount ${BOOTMOUNT}
 rmdir ${BOOTMOUNT} 
 
