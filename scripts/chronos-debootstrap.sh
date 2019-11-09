@@ -50,6 +50,11 @@ fi
 ## Boostrap the filesystem.
 multistrap -a armel -d ${SYSROOT} -f ${DIR}/chronos-${SUITE}.conf
 
+## Create filesystem mountpoints.
+mkdir -p ${SYSROOT}/boot/uboot
+mkdir -p ${SYSROOT}/sys
+mkdir -p ${SYSROOT}/proc
+
 ## Prepare to emulate the chroot
 cat << EOF > ${SYSROOT}/usr/sbin/policy-rc.d
 #!/bin/sh
@@ -59,8 +64,6 @@ chmod a+x ${SYSROOT}/usr/sbin/policy-rc.d
 mv ${SYSROOT}/usr/bin/ischroot ${SYSROOT}/usr/bin/ischroot.debianutils
 cp ${SYSROOT}/bin/true ${SYSROOT}/usr/bin/ischroot
 cp $(which qemu-arm-static) ${SYSROOT}/usr/bin
-mkdir -p ${SYSROOT}/sys
-mkdir -p ${SYSROOT}/proc
 mount -o bind /dev ${SYSROOT}/dev
 mount -o bind /sys ${SYSROOT}/sys
 mount -o bind /proc ${SYSROOT}/proc

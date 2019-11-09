@@ -1,53 +1,43 @@
 #!/bin/bash
+DIR=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
+IMAGENAME=$1
 FILENAME=$1
-BOOTDIR="$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)/rootfs/boot"
-SYSROOT="$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)/debian"
-BLOCKDEV=/dev/loop0
-BOOTPART=${BLOCKDEV}p1
-ROOTFSPART=${BLOCKDEV}p2
+SUFFIX=
 
-# Create an 8GB file for the block device.
-touch ${FILENAME}
-truncate -s 3500m ${FILENAME}
+# Check if the filename ends with a compressed suffix.
+if [ ! -z $(echo ${FILENAME} | grep '\.gz$') ]; then
+    SUFFIX=".gz"
+    IMAGENAME="${FILENAME%.*}"
+elif [ ! -z $(echo ${FILENAME} | grep '\.bz2$') ]; then
+    SUFFIX=".bz2"
+    IMAGENAME="${FILENAME%.*}"
+fi
 
-# Loopback device setup.
-losetup -f ${FILENAME}
-BLOCKDEV=$(losetup -n -j ${FILENAME} -O NAME)
-BOOTPART=${BLOCKDEV}p1
-ROOTFSPART=${BLOCKDEV}p2
+# Create a 4GB file and loopback device.
+touch ${IMAGENAME}
+truncate -s 3950m ${IMAGENAME}
+losetup -f ${IMAGENAME}
+BLOCKDEV=$(losetup -n -j ${IMAGENAME} -O NAME)
+echo "Setup ${IMAGENAME} as ${BLOCKDEV}"
 
-# Partition the device.
-echo "Partitioning device"
-dd if=/dev/zero of=${BLOCKDEV} bs=1k count=1024
-sfdisk ${BLOCKDEV} << EOF
-label: dos
-label-id: 0x00000000
-device: ${BLOCKDEV}
-unit: sectors
-
-${BOOTPART} : start=63,    type=c, size=80262, bootable
-${ROOTFSPART} : start=80325, type=83, size=15429687
-EOF
-partprobe ${BLOCKDEV}
-
-# Install the bootloader
-echo "Installing bootloader into ${BOOTPART}"
-mkfs.vfat -F 32 -n BOOT ${BOOTPART}
-BOOTMOUNT=$(mktemp -d)
-mount -t vfat ${BOOTPART} ${BOOTMOUNT}
-cp ${SYSROOT}/boot/uboot ${BOOTMOUNT}
-umount ${BOOTMOUNT}
-rmdir ${BOOTMOUNT} 
-
-# Install the root filesystem.
-echo "Installing root filesystem into ${ROOTFSPART}"
-mkfs.ext3 -j -L "ROOTFS" ${ROOTFSPART}
-ROOTFSMOUNT=$(mktemp -d)
-mount -t ext3 ${ROOTFSPART} ${ROOTFSMOUNT}
-rsync -a --info=progress2 ${SYSROOT}/ ${ROOTFSMOUNT}
-umount ${ROOTFSMOUNT}
-rmdir ${ROOTFSMOUNT}
-
-# Unmount the loop device.
+# Format and install the partitions.
+${DIR}/mksd-format.sh ${BLOCKDEV}
 losetup -d ${BLOCKDEV}
 
+# Final output and optional compression.
+ESC_BOLD='\033[1m'
+ESC_NORMAL='\033[0m'
+echo ""
+case ${SUFFIX} in
+    ".gz")
+        echo -e "${ESC_BOLD}Compressing image as ${FILENAME}${ESC_NORMAL}"
+        gzip -v ${IMAGENAME}
+        ;;
+    ".bz2")
+        echo -e "${ESC_BOLD}Compressing image as ${FILENAME}${ESC_NORMAL}"
+        bzip2 -vk ${IMAGENAME}
+        ;;
+    *)
+        echo -e "${ESC_BOLD}Created uncompressed image as ${FILENAME}${ESC_NORMAL}"
+        ;;
+esac
