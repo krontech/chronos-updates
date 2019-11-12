@@ -38,6 +38,7 @@ ${BOOTPART} : start=63,    type=c, size=80262, bootable
 ${ROOTFSPART} : start=80325, type=83
 EOF
 partprobe ${BLOCKDEV}
+sleep 0.5
 
 # Install the bootloader
 echo ""
