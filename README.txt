@@ -44,9 +44,9 @@ as follows:
  * Install the `multistrap` and `qemu-user-static` packages in your operating system.
  * Run `scripts/chronos-debootstrap.sh` to create a new root filesystem at `$(pwd)/debian.`
    This script will require root privileges to chroot and configure the new filesystem.
- * Run `scripts/mksd-image.sh <filename>` to use the new root filesystem to create
-   an 8GB image that can be flashed to an SD card directly and used on a Chronos 1.4.
-   This script will require root privileges.
- * To compress the image for use with the update-to-debian project:
-   `gzip <filename> --keep --verbose > debian.img.gz`
+ * Write the data to the SD card or an image 3.5GB in size (before any compression).
+    - To write the filesystem to an uncompressed image:
+      run `scripts/mksd-image.sh <filename>`
+    - To write the filesystem to a compressed image for use with the update-to-debian project,
+      run `scripts/mksd-image.sh <filename>.gz`
 

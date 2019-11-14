@@ -15,7 +15,7 @@ fi
 
 # Create a 4GB file and loopback device.
 touch ${IMAGENAME}
-truncate -s 3950m ${IMAGENAME}
+truncate -s 3500m ${IMAGENAME}
 losetup -f ${IMAGENAME}
 BLOCKDEV=$(losetup -n -j ${IMAGENAME} -O NAME)
 echo "Setup ${IMAGENAME} as ${BLOCKDEV}"
