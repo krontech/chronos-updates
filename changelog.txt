@@ -1,5 +1,15 @@
     +----------------------------------+
    ++                                  ++
+   |  Chronos V0.3.2-patch1 Changelog   |
+   ++                                  ++
+    +----------------------------------+
+
+Fixed Bugs:
+ - Setting the clock in the util window would not be saved across reboots.
+ - Powering down via the camera power button may lead to lost or corrupt files.
+
+    +----------------------------------+
+   ++                                  ++
    |     Chronos V0.3.2 Changelog       |
    ++                                  ++
     +----------------------------------+
