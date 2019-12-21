@@ -2,25 +2,35 @@
 DIR="$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)"
 SYSROOT=$(pwd)/debian
 SUITE=voyager
+GUIPACKAGE=chronos-gui
+EXTRAS=
 
 ## Show some help
 show_help() {
-   echo "Usage: $(basename ${BASH_SOURCE[0]}) [options] [SYSROOT]"
+   echo "Usage: $(basename ${BASH_SOURCE[0]}) [options] [packages]"
    echo ""
    echo "Bootstrap a Chronos/Debian base system into a target directory."
    echo ""
    echo "options:"
-   echo "    -s SUITE   Select SUITE as the release distribution."
-   echo "    -h         Print this message and exit."
+   echo "    -s SUITE Select SUITE as the release distribution. (defalt: ${SUITE})"
+   echo "    -d DIR   Install root filesystem into DIR. (default: ${SYSROOT})"
+   echo "    -g       Select the GUI2 user interface."
+   echo "    -h       Print this message and exit."
 }
 
 ## Do argument parsing
 OPTIND=1
-while getopts "h?s:" opt; do
+while getopts "h?s:d:g" opt; do
    case "$opt" in
       h|\?)
          show_help
          exit 0
+         ;;
+      d)
+         SYSROOT=$OPTARG
+         ;;
+      g)
+         GUIPACKAGE=chronos-gui2
          ;;
       s)
          SUITE=$OPTARG
@@ -29,9 +39,8 @@ while getopts "h?s:" opt; do
 done
 shift $((OPTIND-1))
 
-if [ $# -gt 0 ]; then
-	SYSROOT=$1
-fi
+## Any remaining arguments are packages to add.
+EXTRAS=$@
 
 ## Check for some crucial tools before proceeding.
 if [ -z "$(which multistrap)" ]; then
@@ -48,7 +57,10 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 ## Boostrap the filesystem.
-multistrap -a armel -d ${SYSROOT} -f ${DIR}/chronos-${SUITE}.conf
+(cd ${DIR} && multistrap -a armel -d ${SYSROOT} -f /dev/stdin) << EOF
+$(cat ${DIR}/chronos-${SUITE}.conf)
+packages=${GUIPACKAGE} ${EXTRAS}
+EOF
 
 ## Create filesystem mountpoints.
 mkdir -p ${SYSROOT}/boot/uboot
@@ -188,4 +200,3 @@ EOF
 ##------------------------------
 cp ${DIR}/hwsetup.sh ${SYSROOT}/etc/init.d/
 LC_ALL=C LANGUAGE=C LANG=C chroot ${SYSROOT} update-rc.d hwsetup.sh start 10 S stop 90 0 6
-
