@@ -1,12 +1,15 @@
     +----------------------------------+
    ++                                  ++
-   |  Chronos V0.3.2-patch1 Changelog   |
+   |  Chronos V0.3.2-hotfix Changelog   |
    ++                                  ++
     +----------------------------------+
 
-Fixed Bugs:
+Fixed Bugs (patch1):
  - Setting the clock in the util window would not be saved across reboots.
  - Powering down via the camera power button may lead to lost or corrupt files.
+
+Fixed Bugs (patch2):
+ - Zebra stripes are not configurable via the Util window.
 
     +----------------------------------+
    ++                                  ++
