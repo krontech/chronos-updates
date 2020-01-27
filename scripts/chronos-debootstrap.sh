@@ -59,7 +59,7 @@ fi
 ## Boostrap the filesystem.
 (cd ${DIR} && multistrap -a armel -d ${SYSROOT} -f /dev/stdin) << EOF
 $(cat ${DIR}/chronos-${SUITE}.conf)
-packages=${GUIPACKAGE} ${EXTRAS}
+packages=${EXTRAS}
 EOF
 
 ## Create filesystem mountpoints.
@@ -117,6 +117,9 @@ LANG="en_US.UTF-8"
 LANGUAGE="en_US:en"
 EOF
 chroot ${SYSROOT} locale-gen
+
+## Enable the desired GUI package.
+chroot ${SYSROOT} systemctl enable ${GUIPACKAGE}
 
 ## Provide a root password
 echo "root:chronos" | chroot ${SYSROOT} chpasswd
