@@ -1,0 +1,40 @@
+Source: chronos-essential
+Section: misc
+Maintainer: Owen Kirby <oskirby@gmail.com>
+Priority: optional
+Homepage: http://www.krontech.ca/
+Standards-Version: 3.9.2
+
+Package: chronos-essential
+Depends: krontech-archive-keyring,
+         linux-image-3.2.0,
+         linux-firmware-image,
+         linux-libc-dev,
+         u-boot-ti81xx,
+         ti81xx-firmware,
+         ti81xx-syslink,
+         libtiomx,
+         libtiomx-dev,
+         libqt4-chronos,
+         chronos-pwrutil,
+         chronos-video,
+         chronos-tools,
+         chronos-fpga,
+         chronos-control,
+         chronos-gui,
+         chronos-gui2,
+         chronos-update,
+         gstreamer0.10-tools,
+         gstreamer0.10-alsa,
+         gstreamer0.10-plugins-base,
+         gstreamer0.10-plugins-good,
+         gstreamer0.10-plugins-bad,
+         gstreamer0.10-openmax-dm81xx
+Recommends: libts-dev,
+            libgstreamer0.10-dev,
+            libgstreamer-plugins-base0.10-dev,
+            libtiomx-dev
+Architecture: armel
+Description: Chronos Camera Essential Packages
+ This package contains the dependencies on the essential packages necessary
+ for the 0.4.0 release of the Chronos High-Speed Cameras.

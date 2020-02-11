@@ -4,3 +4,14 @@
 /camUpdate.zip
 /camUpdate*.zip
 /debian/
+
+# Debian metapackage output.
+/metapackage/debian/files
+/metapackage/debian/*.debhelper.log
+/metapackage/debian/*.substvars
+/metapackage/debian/debhelper-build-stamp
+/metapackage/debian/chronos-essential/
+*.build
+*.changes
+*.deb
+
