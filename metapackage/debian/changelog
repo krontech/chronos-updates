@@ -1,1 +1,11 @@
-../changelog.txt
+chronos-essential (0.4.0~beta1) unstable; urgency=medium
+
+  * Add chronos-http package to the v0.4.0 beta release. 
+
+ -- Owen Kirby <oskirby@gmail.com>  Tue, 11 Feb 2020 18:58:54 -0800
+
+chronos-essential (0.4.0~beta) unstable; urgency=low
+
+  * Initial Release of the Chronos Camera for Debian.
+
+ -- Owen Kirby <oskirby@gmail.com>  Fri, 31 Jan 2020 15:07:48 -0800

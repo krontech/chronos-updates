@@ -1,7 +1,7 @@
 Source: chronos-essential
 Section: misc
 Maintainer: Owen Kirby <oskirby@gmail.com>
-Priority: optional
+Priority: important
 Homepage: http://www.krontech.ca/
 Standards-Version: 3.9.2
 
@@ -23,6 +23,7 @@ Depends: krontech-archive-keyring,
          chronos-control,
          chronos-gui,
          chronos-gui2,
+         chronos-http,
          chronos-update,
          gstreamer0.10-tools,
          gstreamer0.10-alsa,

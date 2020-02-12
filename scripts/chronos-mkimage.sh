@@ -33,7 +33,7 @@ ROOTFS_SIZE=7168000
 
 ## Create the partition table.
 echo -e "${SC_BOLD}Partitioning image at ${IMAGENAME}${ESC_NORMAL}"
-dd if=/dev/zero of=ptable.img bs=1k count=1024
+dd if=/dev/zero of=${PTABLE_FILE} bs=1k count=1024
 truncate -s $(((BOOTPART_SIZE+ROOTFS_SIZE+63)*512)) ${PTABLE_FILE}
 /sbin/sfdisk -f ${PTABLE_FILE} << EOF
 label: dos

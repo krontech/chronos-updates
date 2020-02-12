@@ -1,5 +1,1 @@
-chronos-essential (0.4.0) unstable; urgency=low
-
-  * Initial Release of the Chronos Camera for Debian.
-
- -- Owen Kirby <oskirby@gmail.com>  Fri, 31 Jan 2020 15:07:48 -0800
+debian/changelog
