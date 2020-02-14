@@ -1,7 +1,9 @@
 #!/bin/bash
 DIR="$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)"
 SYSROOT=$1
-QEMU=$(which qemu-arm-static)
+if dpkg --print-architecture | grep -qv ^arm; then
+	QEMU=$(which qemu-arm-static)
+fi
 
 ## Create filesystem mountpoints.
 mkdir -p ${SYSROOT}/boot/uboot
@@ -17,6 +19,7 @@ chmod a+x ${SYSROOT}/usr/sbin/policy-rc.d
 mv ${SYSROOT}/usr/bin/ischroot ${SYSROOT}/usr/bin/ischroot.debianutils
 cp ${SYSROOT}/bin/true ${SYSROOT}/usr/bin/ischroot
 [ -z "${QEMU}" ] || cp ${QEMU} ${SYSROOT}/usr/bin
+[ -z "${BOOTPART}" ] || mount -o bind ${BOOTPART} ${SYSROOT}/boot/uboot
 mount -o bind /dev ${SYSROOT}/dev
 mount -o bind /sys ${SYSROOT}/sys
 mount -o bind /proc ${SYSROOT}/proc
@@ -26,6 +29,7 @@ function atexit {
 	umount -l ${SYSROOT}/dev
 	umount -l ${SYSROOT}/sys
 	umount -l ${SYSROOT}/proc
+	[ -z "${BOOTPART}" ] || umount -l ${SYSROOT}/boot/uboot
 	[ -z "${QEMU}" ] || rm ${SYSROOT}/usr/bin/qemu-arm-static
 	rm ${SYSROOT}/usr/sbin/policy-rc.d
 	rm ${SYSROOT}/usr/bin/ischroot
