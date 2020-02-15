@@ -4,6 +4,7 @@
 /camUpdate.zip
 /camUpdate*.zip
 /debian/
+/*.img
 
 # Debian metapackage output.
 /metapackage/debian/files

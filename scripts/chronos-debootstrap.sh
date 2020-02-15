@@ -3,7 +3,7 @@ DIR="$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)"
 SYSROOT=$(pwd)/debian
 SUITE=voyager
 GUIPACKAGE=chronos-gui
-IMAGE=
+BOOTPART=
 SUDO=
 
 ## Show some help
@@ -15,14 +15,14 @@ show_help() {
    echo "options:"
    echo "    -s SUITE Select SUITE as the release distribution. (defalt: ${SUITE})"
    echo "    -d DIR   Install root filesystem into DIR. (default: ${SYSROOT})"
-   echo "    -i FILE  Create a filesystem image directly at FILE."
+   echo "    -b DIR   Install bootloader filesystem into DIR."
    echo "    -g       Select the GUI2 user interface."
    echo "    -h       Print this message and exit."
 }
 
 ## Do argument parsing
 OPTIND=1
-while getopts "h?s:d:i:g" opt; do
+while getopts "h?s:d:b:g" opt; do
    case "$opt" in
       h|\?)
          show_help
@@ -32,7 +32,7 @@ while getopts "h?s:d:i:g" opt; do
          SYSROOT=$OPTARG
          ;;
       i)
-	 IMAGE=$OPTARG
+	 BOOTPART=$OPTARG
 	 ;;
       g)
          GUIPACKAGE=chronos-gui2
@@ -43,9 +43,6 @@ while getopts "h?s:d:i:g" opt; do
    esac
 done
 shift $((OPTIND-1))
-
-## Ensure sbin is in our path...
-export PATH=${PATH}:/usr/sbin:/sbin
 
 ## Check for some crucial tools before proceeding.
 if [ -z "$(which multistrap)" ]; then
@@ -63,27 +60,7 @@ if [[ $EUID -ne 0 ]]; then
    SUDO=sudo
 fi
 
-## Cleanup block devices on exit.
-function image_cleanup {
-  pumount /media/chronos-debootstrap-rootfs
-  pumount /media/chronos-debootstrap-bootpart
-  ${SUDO} losetup -d ${BLOCKDEV}
-}
-
-if [ ! -z "${IMAGE}" ]; then
-   ## Create and mount the loop device for image creation.
-   ${DIR}/mksd-loopdev.sh ${IMAGE} || exit 1
-   BLOCKDEV=$(/sbin/losetup -n -j ${IMAGE} -O NAME)
-
-   pmount ${BLOCKDEV}p1 chronos-debootstrap-bootpart
-   pmount -e ${BLOCKDEV}p2 chronos-debootstrap-rootfs
-   trap image_cleanup EXIT
-
-   cd ${DIR} && ${SUDO} SUITE=${SUITE} GUIPACKAGE=${GUIPACKAGE} BOOTPART=/media/chronos-debootstrap-bootpart \
-	   multistrap -a armel -d /media/chronos-debootstrap-rootfs -f ${DIR}/chronos-${SUITE}.conf
-else
-   ## Debootstrap the filesystem into the sysroot.
-   cd ${DIR} && ${SUDO} SUITE=${SUITE} GUIPACKAGE=${GUIPACKAGE} \
+## Debootstrap the filesystem into the sysroot.
+cd ${DIR} && ${SUDO} SUITE=${SUITE} GUIPACKAGE=${GUIPACKAGE} BOOTPART=${BOOTPART} \
 	   multistrap -a armel -d ${SYSROOT} -f ${DIR}/chronos-${SUITE}.conf
-fi
 
