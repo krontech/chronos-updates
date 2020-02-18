@@ -68,6 +68,8 @@ function atexit {
 trap atexit EXIT
 
 ## Debootstrap the filesystem.
+# This variable madness is try to pass the all the script arguments, with
+# the final argument (image name) removed to chronos-debootstrap.sh
 ${DIR}/chronos-debootstrap.sh ${@:1:$(($#-1))} -d /media/chronos-mkimage-rootfs -b /media/chronos-mkimage-bootpart
 
 ## Assemble the filesystem image, and optionally compress by suffix.
@@ -83,9 +85,9 @@ case ${IMAGENAME##*.} in
       bzip2 -c ${ROOTFS_FILE} >> ${IMAGENAME}
       ;;
    xz)
-      xz -c ${PTABLE_FILE} > ${IMAGENAME}
-      xz -c ${BOOTPART_FILE} >> ${IMAGENAME}
-      xz -c ${ROOTFS_FILE} >> ${IMAGENAME}
+      xz -c --threads=0 ${PTABLE_FILE} > ${IMAGENAME}
+      xz -c --threads=0 ${BOOTPART_FILE} >> ${IMAGENAME}
+      xz -c --threads=0 ${ROOTFS_FILE} >> ${IMAGENAME}
       ;;
    *)
       cat ${PTABLE_FILE} > ${IMAGENAME}
@@ -93,4 +95,7 @@ case ${IMAGENAME##*.} in
       cat ${ROOTFS_FILE} >> ${IMAGENAME}
       ;;
 esac
+
+## Cleanup the intermediate filesystem images.
+rm ${PTABLE_FILE} ${BOOTPART_FILE} ${ROOTFS_FILE}
 
