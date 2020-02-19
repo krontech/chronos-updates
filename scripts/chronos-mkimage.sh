@@ -58,12 +58,14 @@ pmount ${BOOTPART_DEV} chronos-mkimage-bootpart
 pmount -e ${ROOTFS_DEV} chronos-mkimage-rootfs
 
 ## Cleanup when we're finished.
-## TODO: Delete the intermediate filesystem images too.
 function atexit {
    pumount /media/chronos-mkimage-bootpart
    pumount /media/chronos-mkimage-rootfs
    ${SUDO} losetup -d ${BOOTPART_DEV}
    ${SUDO} losetup -d ${ROOTFS_DEV}
+   rm ${PTABLE_FILE}
+   rm ${BOOTPART_FILE}
+   rm ${ROOTFS_FILE}
 }
 trap atexit EXIT
 
@@ -71,6 +73,11 @@ trap atexit EXIT
 # This variable madness is try to pass the all the script arguments, with
 # the final argument (image name) removed to chronos-debootstrap.sh
 ${DIR}/chronos-debootstrap.sh ${@:1:$(($#-1))} -d /media/chronos-mkimage-rootfs -b /media/chronos-mkimage-bootpart
+ERR=$?
+if [ $ERR -ne 0 ]; then
+   echo "Image bootstrap failed. Exiting..." >&2
+   exit $ERR
+fi
 
 ## Assemble the filesystem image, and optionally compress by suffix.
 case ${IMAGENAME##*.} in
@@ -95,7 +102,4 @@ case ${IMAGENAME##*.} in
       cat ${ROOTFS_FILE} >> ${IMAGENAME}
       ;;
 esac
-
-## Cleanup the intermediate filesystem images.
-rm ${PTABLE_FILE} ${BOOTPART_FILE} ${ROOTFS_FILE}
 

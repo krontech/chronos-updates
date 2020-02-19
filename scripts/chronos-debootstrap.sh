@@ -31,7 +31,7 @@ while getopts "h?s:d:b:g" opt; do
       d)
          SYSROOT=$OPTARG
          ;;
-      i)
+      b)
 	 BOOTPART=$OPTARG
 	 ;;
       g)
