@@ -18,7 +18,7 @@ To backup your factory calibration data:
 
 Step 2: Download the Latest Software Image
 ------------------------------------------
-Download the latest Debian image from [debian.krontech.ca/builds](http://debian.krontech.ca/build).
+Download the latest Debian image from [debian.krontech.ca/builds](http://debian.krontech.ca/builds).
 The image file will have an img.xz extension, and contains a sector-by-sector
 compressed image of the microSD card.
 
