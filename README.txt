@@ -12,7 +12,7 @@ Updating Your Camera
     - If a pop-up that says 'No software update found' is displayed, even when a USB stick containing the update in the correct location is connected, reboot the camera and try again.
  * During the update, the screen will go blank and an `Applying Update` message may be displayed.
  * After approximately 30 to 60 seconds, the update will be complete and the camera will restart.
- 
+
 Building a Release Package
 --------------------------
 You can build a release package directly from the git repository as follows:
@@ -20,33 +20,3 @@ You can build a release package directly from the git repository as follows:
         instructions at https://git-lfs.github.com/
  * Clone the https://github.com/krontech/chronos-updates/ repository.
  * Run `make` to build the `.zip` package.
-
-Building a Debian Filesystem
-----------------------------
-The scripts directory contains some tools which you use to build a Debian filesystem
-for the Chronos Camera as follows:
- * Install the `multistrap` and `qemu-user-static` packages in your operating system.
- * Run `scripts/chronos-debootstrap.sh` to create a new root filesystem at `$(pwd)/debian.`
-   This script will require root privileges to chroot and configure the new filesystem.
- * Insert a micro-SD card of at least 4GB into your computer and locate the block
-   device (eg: `/dev/sdb`).
- * Run `scripts/mksd-format.sh <block device>` to partition the micro-SD card and copy
-   the bootloader and root filesystem onto the card. Note that this script will destroy all
-   data on the SD card.
- * Remove the micro-SD card, and insert it into the slot on the bottom of the Chronos.
- * Power on the camera, and enjoy.
-
-Building a Debian SD Card Image
-----------------------------
-The scripts directory contains some tools which you use to build an image of an SD card
-containing the Debian OS for the Chronos Camera, which can be used with update-to-debian,
-as follows:
- * Install the `multistrap` and `qemu-user-static` packages in your operating system.
- * Run `scripts/chronos-debootstrap.sh` to create a new root filesystem at `$(pwd)/debian.`
-   This script will require root privileges to chroot and configure the new filesystem.
- * Write the data to the SD card or an image 3.5GB in size (before any compression).
-    - To write the filesystem to an uncompressed image:
-      run `scripts/mksd-image.sh <filename>`
-    - To write the filesystem to a compressed image for use with the update-to-debian project,
-      run `scripts/mksd-image.sh <filename>.gz`
-
