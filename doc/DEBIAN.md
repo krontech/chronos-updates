@@ -78,7 +78,7 @@ to as the disk destroyer), and it will just as easily overwrite your computer's 
 filesystem as it will the microSD card if you set the output device incorrectly.
 
 First locate the block device of the microSD as it was detected by your operating
-system. In this example, it appears as `/dev/sdb`.
+system. In this example, it appears as `/dev/sdX`.
 ```
 user@example:~$ lsblk -p
 NAME                                       MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
@@ -89,23 +89,23 @@ NAME                                       MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
 │   └─/dev/mapper/ubuntu--gnome--vg-swap_1 253:2    0   980M  0 lvm   [SWAP]
 ├─/dev/nvme0n1p1                           259:1    0   512M  0 part  /boot/efi
 └─/dev/nvme0n1p2                           259:2    0   732M  0 part  /boot
-/dev/sdb                                     8:16   1  14.9G  0 disk  
-├─/dev/sdb2                                  8:18   1   3.4G  0 part  /media/user/ROOTFS
-└─/dev/sdb1                                  8:17   1  39.2M  0 part  /media/user/BOOT
+/dev/sdX                                     8:16   1  14.9G  0 disk  
+├─/dev/sdX2                                  8:18   1   3.4G  0 part  /media/user/ROOTFS
+└─/dev/sdX1                                  8:17   1  39.2M  0 part  /media/user/BOOT
 ```
 
 Before we can write an image to the microSD card, we must first ensure that it is not
 mounted by your operating system. We can use the lsblk tool to list any devices mounted
 for this card, and unmount them as needed.
 ```
-user@example:~$ for part in $(lsblk -n -o MOUNTPOINT /dev/sdb); do umount $part done
+user@example:~$ for part in $(lsblk -n -o MOUNTPOINT /dev/sdX); do umount $part done
 ```
 
 The image can then be decompressed and written directly to the block device as follows.
 Depending on the write speed of your microSD card. The decompressed image will be approximately
 3.5GB in size, and can take between 5 and 15 minutes to complete writing.
 ```
-user@example:~$ xzcat chronos-voyager-20200225.img.xz | sudo dd of=/dev/sdb status=progress
+user@example:~$ xzcat chronos-voyager-20200225.img.xz | sudo dd of=/dev/sdX status=progress
 ```
 
 ### Other Links
@@ -187,7 +187,7 @@ the filesystems onto the card. This script takes a single argument giving the bl
 to which the filesystem should be written.
 
 ```
-user@example:~/chronos-updates$ ./scripts/mksd-format.sh /dev/sdb
+user@example:~/chronos-updates$ ./scripts/mksd-format.sh /dev/sdX
 ```
 
 Once complete, you can remove the SD card, and install it into a Camera.
@@ -216,3 +216,19 @@ image, and the following patterns are recognized:
 | `*.bz2` | Bzip2 compression | `bzcat filename.bz2 \| sudo dd of=/dev/sdX status=progress`
 | `*.xz`  | LZMA compression  | `xzcat filename.xz \| sudo dd of=/dev/sdX status=progress`
 | otherwise | No compression  | `sudo dd if=filename of=/dev/sdX status=progress`
+
+Builds of the microSD card image will require root permissions to execute the `multistrap` and
+`losetup` tools, and must grant `pmount` the ability to mount loopback devices. On an operating
+system with `sudo`, this configuration might look like the following:
+
+```
+user@example:~$ cat /etc/sudoers.d/multistrap
+user      ALL=(ALL) SETENV:/usr/sbin/multistrap
+user      ALL=(ALL) /sbin/losetup
+
+user@example:~$ cat /etc/pmount.allow
+# /etc/pmount.allow
+# pmount will allow users to additionally mount all devices that are
+# listed here.
+/dev/loop[0-9]*
+```
