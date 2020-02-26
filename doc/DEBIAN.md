@@ -72,8 +72,8 @@ computer.
 ![Flashing Completed](balena-complete.png)
 
 ### Linux Command Line
-The image can be written directly to a microSD card using the `xz` and `dd` tools.
-However, **this tool can be extremely dangerous if misused** (it is sometimes refered
+The image can be written directly to a microSD card using the `xzcat` and `dd` tools.
+However, **this tool can be extremely dangerous if misused** (`dd` is sometimes refered
 to as the disk destroyer), and it will just as easily overwrite your computer's root
 filesystem as it will the microSD card if you set the output device incorrectly.
 
@@ -95,30 +95,36 @@ NAME                                       MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
 ```
 
 Before we can write an image to the microSD card, we must first ensure that it is not
-mounted by your operating system. We can use the lsblk tool to list any devices mounted
+mounted by your operating system. We can use the `lsblk` tool to list any devices mounted
 for this card, and unmount them as needed.
 ```
-user@example:~$ for part in $(lsblk -n -o MOUNTPOINT /dev/sdX); do umount $part done
+user@example:~$ for part in $(lsblk -n -o MOUNTPOINT /dev/sdX); do umount $part; done
 ```
 
 The image can then be decompressed and written directly to the block device as follows.
-Depending on the write speed of your microSD card. The decompressed image will be approximately
-3.5GB in size, and can take between 5 and 15 minutes to complete writing.
+The decompressed image will be approximately 3.7 GB in size and, depending on the write
+speed of your microSD card, can take between 5 and 15 minutes to complete writing.
 ```
-user@example:~$ xzcat chronos-voyager-20200225.img.xz | sudo dd of=/dev/sdX status=progress
+user@example:~$ xzcat chronos-voyager-20200226.img.xz | sudo dd of=/dev/sdX status=progress
+[sudo] password for user:
+3711142400 bytes (3.7 GB, 3.5 GiB) copied, 751 s, 4.9 MB/s    
 ```
 
 ### Other Links
 The process described here is very similar to the installation of many other embedded
 Linux systems. You can find similar guides for both the
 [Raspberry Pi](https://www.raspberrypi.org/documentation/installation/installing-images/)
-and [Beaglebone](https://beagleboard.org/getting-started).
+and [Beaglebone](https://beagleboard.org/getting-started), which may provide some 
+useful suggestions on other ways to create a microSD card if these tools don't work for
+you.
 
 Step 5: Insert the microSD Card into Your Camera
 ------------------------------------------------
 Insert the microSD card into the slot located on the bottom of your camera, near
 the model and serial number. You will need to push the card in passed the detent
 to ensure it stays latched in place.
+
+![microSD Card Location](microsd-location.jpg)
 
 Once installed, you can now power the camera on. You should be greeted with a
 Chronos boot logo, and eventually the user interface.
@@ -158,8 +164,8 @@ the staging directory into a bootable root filesystem.
 A collection of scripts can be found in the `scripts` directory that can assist the
 user in building a filesystem image.
 
-| Scripts                | Description
-|------------------------|--------------
+| Script                 | Description
+|:-----------------------|:-------------
 |`chronos-debootstrap.sh`| Builds a Debian filesystem into a staging directory (`$(pwd)/debian` by default)
 |`chronos-mkimage.sh`    | Builds a Debian filesystem into a image file, with optional compression.
 |`chronos-chroot.sh`     | Emulate an ARM machine that using the staging directory as its root filesystem.
@@ -190,7 +196,7 @@ to which the filesystem should be written.
 user@example:~/chronos-updates$ ./scripts/mksd-format.sh /dev/sdX
 ```
 
-Once complete, you can remove the SD card, and install it into a Camera.
+Once complete, you can remove the microSD card, and install it into a Camera.
 
 mkimage: Building a Compressed microSD Image
 --------------------------------------------
@@ -204,14 +210,14 @@ the name of the image file to create. All other arguments to this script are pas
 modification to the `chronos-debootstrap.sh` script.
 
 ```
-user@example:~/chronos-updates$ ./scripts/chronos-debootstrap.sh -s voyager chronos-voyager.img.xz
+user@example:~/chronos-updates$ ./scripts/chronos-mkimage.sh -s voyager chronos-voyager.img.xz
 ```
 
 The suffix of the image file will determine what type of compression should be applied to the
 image, and the following patterns are recognized:
 
 | Pattern | Compression Type  | microSD Programming Command
-|---------|-------------------|:---------------------------
+|:--------|:------------------|:---------------------------
 | `*.gz`  | GZIP compression  | `zcat filename.gz \| sudo dd of=/deb/sdX status=progress`
 | `*.bz2` | Bzip2 compression | `bzcat filename.bz2 \| sudo dd of=/dev/sdX status=progress`
 | `*.xz`  | LZMA compression  | `xzcat filename.xz \| sudo dd of=/dev/sdX status=progress`

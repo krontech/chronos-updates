@@ -14,6 +14,7 @@ if [ $# -lt 1 ]; then
    exit 1
 fi
 IMAGENAME=${@:$#}
+IMAGEBASE=${IMAGENAME%%.*}
 SUDO=
 
 ## Ensure we have sbin in our path.
@@ -23,11 +24,16 @@ PATH=${PATH}:/usr/sbin:/sbin
 if [[ $EUID -ne 0 ]]; then
    SUDO=sudo
 fi
+# Check for some crucial tools before proceeding.
+if [ -z "$(which pmount)" ] || [ -z "$(which pumount)" ]; then
+   echo "pmount not found, please install before proceeding" >&2
+   exit 1
+fi
 
 ## The partition sizes and filenames.
-PTABLE_FILE=${IMAGENAME%.*}.ptable.img
-BOOTPART_FILE=${IMAGENAME%.*}.boot.vfat.img
-ROOTFS_FILE=${IMAGENAME%.*}.rootfs.ext3.img
+PTABLE_FILE=${IMAGEBASE}.ptable.img
+BOOTPART_FILE=${IMAGEBASE}.boot.vfat.img
+ROOTFS_FILE=${IMAGEBASE}.rootfs.ext3.img
 BOOTPART_SIZE=80262
 ROOTFS_SIZE=7168000
 
@@ -38,7 +44,7 @@ truncate -s $(((BOOTPART_SIZE+ROOTFS_SIZE+63)*512)) ${PTABLE_FILE}
 /sbin/sfdisk -f ${PTABLE_FILE} << EOF
 label: dos
 label-id: 0x00000000
-device: ptable.img
+device: ${IMAGENAME}
 unit: sectors
 
 ${IMAGENAME}p1 : start=63, type=c, size=$((BOOTPART_SIZE)), bootable
