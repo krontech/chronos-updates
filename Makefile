@@ -35,6 +35,14 @@ camUpdate/update.md5sum: camUpdate/update.tgz camUpdate
 	rm -f $@
 	md5sum camUpdate/* > $@
 
+debian: clean
+	mkdir -p camUpdate
+	cp update-to-debian/* camUpdate/
+	cp update.sh Chronos1_4PowerController.X.production.hex camUpdate
+	mv debian.img.gz camUpdate/
+	md5sum camUpdate/* > camUpdate/update.md5sum
+	zip -r camUpdate.zip camUpdate/
+
 ## Generate the update package given by the make goal.
 $(ZIPFILE) $(filter %.zip,$(MAKECMDGOALS)): camUpdate camUpdate/update.tgz camUpdate/update.md5sum $(DOCFILES)
 	rm -f $@

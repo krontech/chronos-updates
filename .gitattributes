@@ -17,3 +17,4 @@ rootfs/opt/camera/cam-json filter=lfs diff=lfs merge=lfs -text
 rootfs/opt/camera/cam-pipeline filter=lfs diff=lfs merge=lfs -text
 rootfs/opt/camera/cam-regdump filter=lfs diff=lfs merge=lfs -text
 rootfs/opt/camera/cam-recover filter=lfs diff=lfs merge=lfs -text
+update-to-debian/update-to-debian filter=lfs diff=lfs merge=lfs -text
