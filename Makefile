@@ -19,6 +19,7 @@ TARFLAGS = --numeric-owner --owner=0 --group=0
 
 clean:
 	rm -rf $(ZIPFILE)
+	rm -rf camUpdate-debian.zip
 	rm -rf camUpdate
 
 camUpdate/update.tgz:
@@ -41,7 +42,7 @@ debian: clean
 	cp update.sh Chronos1_4PowerController.X.production.hex camUpdate
 	mv debian.img.gz camUpdate/
 	md5sum camUpdate/* > camUpdate/update.md5sum
-	zip -r camUpdate.zip camUpdate/
+	zip -r camUpdate-debian.zip camUpdate/
 
 ## Generate the update package given by the make goal.
 $(ZIPFILE) $(filter %.zip,$(MAKECMDGOALS)): camUpdate camUpdate/update.tgz camUpdate/update.md5sum $(DOCFILES)
