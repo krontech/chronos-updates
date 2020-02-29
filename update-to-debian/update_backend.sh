@@ -9,7 +9,6 @@ fi
 
 while [ 1 ];
 do
-    >&2 echo loop start
     read -r -t 1 LINE
     >&2 echo "$LINE"
     
@@ -42,8 +41,9 @@ do
         break
     fi
 done
->&2 echo 'loop done'
 
+# unmount the SD card before writing the image
+umount /media/mmcblk1*
 
 #Update the Power Management IC if an update file is in the update drive's root directory:
 PMICHEXFILE=camUpdate/Chronos1_4PowerController.X.production.hex
@@ -83,7 +83,6 @@ echo WriteDone
 
 while [ "$LINE" != "PowerDown" ];
 do
-    >&2 echo loop start
     read -r -t 1 LINE
     >&2 echo "$LINE"
 done
