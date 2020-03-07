@@ -35,6 +35,10 @@ You can build a release package directly from the git repository as follows:
  * Install the `git-lfs` package for your operating system, or follow the installation
         instructions at https://git-lfs.github.com/
  * Clone the https://github.com/krontech/chronos-updates/ repository.
- * run `make` to build a `.zip` package.
+ * If making a camUpdate package for upgrade-to-debian(which writes a debian image to the SD card in the top slot):
+    - create a Debian SD image using the "Creating Debian Images" section of doc/DEBIAN.md, and compress it with gzip.
+    - Rename it to "debian.img.gz".
+    - Put that file into the root of this repository.
+ * Build the `zip` package.
     - Run `make` to build a `.zip` package for updating to newer software on arago.
     - Run `make debian` to build a `.zip` package containing a compressed Debian image and the update-to-debian app, which runs on the camera and uncompresses the image and writes it to the SD card in the camera's top slot.
