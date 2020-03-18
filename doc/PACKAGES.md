@@ -9,12 +9,15 @@ What is Debian?
 ===============
 Debian is a GNU/Linux distribution that provides software in the form of packages
 that can be assembled into a complete bootable operating system. Packages are
-distributed in the form of `.deb` files, and are typically downloaded from online
-repositories.
+distributed as `.deb` files, and are typically downloaded from online repositories.
 
 Every package that is provided in a Debian operating system is denoted by a uniqe
 name, and a strictly ordered version number. Packages may depend on one another,
 creating a dependency tree of software that is required to create a working system.
+
+To simplify the number of packages necessary to install a working Chronos camera,
+we provide the `chronos-essential` metapackage, which includes dependencies on all
+the required software.
 
 Debootstrap
 -----------
@@ -129,7 +132,7 @@ an executable, but the end user of your software doesn't need to install `gcc` i
 to run your executable.
 
 The second block defines the metadata for a specific package that is built from these
-sources. This blick must at least specify the name of the package that is to be built
+sources. This block must at least specify the name of the package that is to be built
 as well as a description, and any packages that must be installed on the system in
 order to run the desired software. You may specify more than one package to be built
 from a single source package.
@@ -342,7 +345,7 @@ However, the Debian packaging tools has no way to identify which of those
 files belong to which of these three binary packages. When building a package
 with multiple binaries, we must specify files to be included in each binary
 package by adding a file named `debian/packagename.install`. This file uses
-the same syntax as the `debian/install` file we have seen earliy. For
+the same syntax as the `debian/install` file we have seen earlier. For
 example, `debian/chronos-video.install` contains the following:
 
 ```
@@ -396,7 +399,7 @@ Further Reading
 ===============
 There are some more subjects that should be given their own article to go over
 in more detail than we can cover here:
- * Cross Compliation: cowbuilder and git-buildpackage
+ * [Cross Compliation](/doc/XCOMPILE.md): Wrangling cowbuilder and git-buildpackage
+ * [Backporting](/doc/XCOMPILE.md#backporting): Making new software old again
  * Python Packages: Getting to know setuptools
- * Backports: Making new software old again
  * Repositories: Sharing is caring, but trust is key.
