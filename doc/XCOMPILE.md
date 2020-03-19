@@ -2,7 +2,7 @@ Package Cross Compilation
 =========================
 Debian packages must be built on a Debian system that is running the target
 architecture, and has satisfied the Build-Deps of the source package. The
-unfortunately consequence is that there is no easy way to cross-compile a
+unfortunate consequence is that there is no easy way to cross-compile a
 package. However, in this document we will discuss some tools we can use
 that will allow us to address this problem.
 
@@ -13,13 +13,12 @@ packages listed by the `Build-Deps` directive in the `debian/control` file.
 To avoid the installation of undesired packages on a developer machine, it
 is recommended to create a `chroot` for the purpose of building the package.
 
-`chroot` is a tool that allows the user to create and contain child process
+`chroot` is a tool that allows the user to create and contain child processes
 within a different root directory. For the purpose of packaging we can create
 a clean Debian operating system in a new directory, and use the new operating
-system for the building of our package, and then discard it when complete,
-without ever making changes to the host operating system. The advantage is
-that it isolates the package build environment from the developer's host
-system.
+system for the building of our package, and then discard it when complete.
+This isolates the build environment from being tainted by the developer's
+host machine, and vice-versa.
 
 `pbuilder` is a tool that automates the process of creating new root
 filesystems and `chroot`-ing into them for package building. You can create
@@ -38,11 +37,12 @@ pdebuild --debbuildopts -b
 
 cowbuilder - Mooooo
 -------------------
-`pbulder` works by creating tarballs of the pristine build environment that can
-be extracted, modified and discard on each build. This tends to be inefficient,
-and has a lot of overhead. The solution to this is a more modern tool known as
-`cowbuilder`, which takes advantage of copy-on-write filesystem features to
-eliminate this overhead and dramatically improve build times.
+`pbulder` works by creating tarballs of the pristine build environment, which
+then extracted, modified and discard on each build. This is rather inefficient,
+and has a lot of disk and CPU overhead before any build can start. The solution
+to this is a more modern tool known as `cowbuilder`, which takes advantage of
+copy-on-write filesystem features to eliminate this overhead and dramatically
+improve build times.
 
 You can create a `chroot` located at `/var/cache/pbuilder/base-jessie-armel.cow`
 with `cowbuilder` as follows:
@@ -54,8 +54,7 @@ sudo cowbuilder --create --distribution jessie \
     --debootstrapopts --arch --debootstrapopts armel
 ```
 
-Using this new `chroot` can be acheived by adding a few arguments to `pdebuild`
-as follows:
+This new `chroot` can be used by `pdebuild` by adding a few arguments:
 ```
 pdebuild --debbuildopts -b --pbuilder cowbuilder -- --basepath /var/cache/pbuilder/base-jessie-armel.cow
 ```

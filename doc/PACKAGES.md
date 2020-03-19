@@ -402,4 +402,4 @@ in more detail than we can cover here:
  * [Cross Compliation](/doc/XCOMPILE.md): Wrangling cowbuilder and git-buildpackage
  * [Backporting](/doc/XCOMPILE.md#backporting): Making new software old again
  * Python Packages: Getting to know setuptools
- * Repositories: Sharing is caring, but trust is key.
+ * [Repositories](/doc/REPOSITORY.md): Sharing is caring, but trust is key.
